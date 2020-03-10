@@ -18,6 +18,14 @@ export default class Repository {
         }
     }
 
+    async status() {
+        return await this.#simpleGit.status();
+    }
+
+    async getPath() {
+        return this.#path;
+    }
+
     toJSON() {
         return {
             path: this.#path,
