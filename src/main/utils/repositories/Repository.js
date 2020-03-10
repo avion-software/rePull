@@ -34,6 +34,10 @@ export default class Repository {
         return this.#path;
     }
 
+    async fetch(remote, branch) {
+        return this.#simpleGit.fetch(remote, branch);
+    }
+
     toJSON() {
         return {
             id: this.#id,
