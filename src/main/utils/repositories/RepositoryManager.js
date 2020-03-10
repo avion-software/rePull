@@ -8,6 +8,8 @@ export default class RepositoryManager {
 
     #repositories = {};
 
+    #repositoriesById = {};
+
     #loadPromise;
 
     constructor() {
@@ -40,6 +42,7 @@ export default class RepositoryManager {
             }
 
             this.#repositories[repositoryPath] = repo;
+            this.#repositoriesById[await repo.getId()] = repo;
         });
 
         await Promise.all(promises);
@@ -49,5 +52,9 @@ export default class RepositoryManager {
         await this.#loadPromise;
 
         return Object.values(this.#repositories);
+    }
+
+    async getRepositoryById(id) {
+        return this.#repositoriesById[id] || null;
     }
 }
