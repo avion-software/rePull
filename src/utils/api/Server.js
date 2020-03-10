@@ -8,6 +8,7 @@ export default class Server {
         eventEmitter.on('request', this.handleRequest);
 
         this.get = this.#router.get.bind(this.#router);
+        this.post = this.#router.post.bind(this.#router);
     }
 
     async handleRequest(event, data) {
