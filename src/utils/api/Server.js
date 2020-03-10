@@ -22,6 +22,7 @@ export default class Server {
                 headers: data.headers,
                 method: data.method,
                 path: data.path,
+                body: data.body,
             },
             response: {
 
