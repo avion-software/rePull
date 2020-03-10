@@ -3,7 +3,9 @@
     <package-json value="$PROJECT_DIR$/package.json" />
     <command value="start" />
     <node-interpreter value="project" />
-    <envs />
+    <envs>
+      <env name="GIT_WORKSPACE" value="" />
+    </envs>
     <method v="2" />
   </configuration>
 </component>
