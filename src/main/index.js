@@ -1,6 +1,7 @@
 import { app, BrowserWindow } from 'electron';
 import { resolve } from 'path';
 import MainServer from './utils/api/MainServer';
+import createRepositoryEndpoints from './api/repositories';
 
 function createWindow () {
   // Create the browser window.
@@ -14,10 +15,7 @@ function createWindow () {
   });
 
   const mainServer = new MainServer();
-  mainServer.get('/data', (ctx) => {
-    ctx.body = 'Hello World!';
-    ctx.status = 200;
-  });
+  createRepositoryEndpoints(mainServer);
  
   // and load the index.html of the app.
   win.loadFile('index.html');
