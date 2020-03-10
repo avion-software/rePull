@@ -38,6 +38,10 @@ export default class Repository {
         return this.#simpleGit.fetch(remote, branch);
     }
 
+    async pull(remote, branch) {
+        return this.#simpleGit.pull(remote, branch);
+    }
+
     toJSON() {
         return {
             id: this.#id,
