@@ -5,7 +5,7 @@ import request from './utils/api/request';
 
 ipcRenderer.send('update-notify-value', 'Hello World');
 
-request('/data').then(async (res) => {
+request('/repositories').then(async (res) => {
     console.log(res, await res.json());
 });
  
