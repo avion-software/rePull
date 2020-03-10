@@ -1,7 +1,7 @@
 import { app, BrowserWindow } from 'electron';
 import { resolve } from 'path';
 import MainServer from './utils/api/MainServer';
-import findGitRepositoryPathes from './utils/fs/findGitRepositoryPathes';
+import RepositoryManager from './utils/repositories/RepositoryManager';
 
 function createWindow () {
   // Create the browser window.
@@ -15,8 +15,10 @@ function createWindow () {
   });
 
   const mainServer = new MainServer();
+  const repoManager = new RepositoryManager();
   mainServer.get('/repositories', async (ctx) => {
-    ctx.body = await findGitRepositoryPathes(process.env.GIT_WORKSPACE);
+    await repoManager.reload();
+    ctx.body = (await repoManager.getRepositories()).map(repo => repo.toJSON());
     ctx.status = 200;
   });
  
