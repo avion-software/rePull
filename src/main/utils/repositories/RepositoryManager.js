@@ -12,6 +12,17 @@ export default class RepositoryManager {
 
     #loadPromise;
 
+    static #RepositoryManager = new RepositoryManager();
+
+    /**
+     * Returns an instance of the RepositoryManager
+     * @returns {RepositoryManager}
+     * @constructor
+     */
+    static Instance() {
+        return this.#RepositoryManager;
+    }
+
     constructor() {
         this.#loadPromise = this.#reload();
     }
