@@ -22,7 +22,7 @@ export default async function commit(ctx) {
     }
 
     ctx.body = {
-        shortHash: commitResponse.hash,
+        shortHash: commitResponse.commit,
         branch: commitResponse.branch,
         changes: commitResponse.summary.changes,
     };
