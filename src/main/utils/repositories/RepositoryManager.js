@@ -29,6 +29,10 @@ export default class RepositoryManager {
 
         const repositories = await findGitRepositoryPathes(process.env.GIT_WORKSPACE);
         const promises = repositories.map(async (repositoryPath) => {
+            if (this.#repositories[repositoryPath]) {
+                return;
+            }
+
             const repo = new Repository(repositoryPath);
 
             if (!(await repo.isGitRepo())) {
