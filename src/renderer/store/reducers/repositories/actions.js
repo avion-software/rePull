@@ -1,3 +1,5 @@
+import listRepositories from '../../../api/repositories/list';
+
 export const SET_REPOSITORIES = 'SET_REPOSITORIES';
 export const setRepositories = (repositories) => ({
     type: SET_REPOSITORIES,
@@ -5,5 +7,10 @@ export const setRepositories = (repositories) => ({
 });
 
 export const loadRepositories = ()  => async (dispatch) => {
-    dispatch(setRepositories([]));
+    try {
+        const res = await listRepositories();
+        dispatch(setRepositories(res));
+    } catch (ex) {
+        dispatch(setRepositories([]));
+    }
 };
