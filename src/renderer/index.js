@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import request from './utils/api/request';
 import store from './store';
 import { loadRepositories } from './store/reducers/repositories/actions';
+import RepositoryListContainer from './components/repository-list/RepositoryListContainer';
 
 ipcRenderer.send('update-notify-value', 'Hello World');
 
@@ -18,6 +19,7 @@ const Index = () => {
     return (
         <Provider store={store}>
             <div>Hello React!</div>
+            <RepositoryListContainer/>
         </Provider>
     );
 };
