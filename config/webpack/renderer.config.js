@@ -10,6 +10,9 @@ module.exports = webpackMerge(baseConfig, {
     mode: 'development',
     entry: path.resolve(ROOT_PATH, 'src', 'renderer', 'index.js'),
     target: 'electron-renderer',
+    resolve: {
+        extensions: ['.js', '.jsx']
+    },
     externals: {
         'electron': 'electron',
         'uuid/v4': 'uuid.v4',
