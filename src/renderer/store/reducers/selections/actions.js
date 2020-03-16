@@ -1,5 +1,12 @@
+import { WINDOW_TITLE_PREFIX } from '../../../constants/app-constants';
+
 export const SET_ACTIVE_REPOSITORY = 'SET_ACTIVE_REPOSITORY';
-export const setActiveRepository = (repositoryId) => ({
+const setActiveRepositoryAction = (repositoryId) => ({
     type: SET_ACTIVE_REPOSITORY,
     payload: repositoryId,
 });
+
+export const setActiveRepository = (repository) => (dispatch) => {
+    dispatch(setActiveRepositoryAction(repository.id));
+    window.document.title = `${WINDOW_TITLE_PREFIX}${repository.name}`;
+};
