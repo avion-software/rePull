@@ -2,7 +2,11 @@ import { app, BrowserWindow } from 'electron';
 import { resolve } from 'path';
 import MainServer from './utils/api/MainServer';
 import createRepositoryEndpoints from './api/repositories';
-import { MAIN_WINDOW_DEFAULT_HEIGHT, MAIN_WINDOW_DEFAULT_WIDTH } from './constants/app-constants';
+import {
+  MAIN_WINDOW_DEFAULT_HEIGHT,
+  MAIN_WINDOW_DEFAULT_TITLE,
+  MAIN_WINDOW_DEFAULT_WIDTH
+} from './constants/app-constants';
 
 function createWindow () {
   // Create the browser window.
