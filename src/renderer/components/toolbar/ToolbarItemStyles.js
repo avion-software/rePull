@@ -5,6 +5,7 @@ const useToolbarItemStyles = makeStyles((theme) => ({
         display: 'flex',
         flexDirection: 'column',
         width: 80,
+        height: '100%',
         alignItems: 'center',
         justifyContent: 'space-evenly',
         cursor: 'pointer',
