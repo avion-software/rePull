@@ -5,17 +5,26 @@ import { faArrowAltCircleDown } from '@fortawesome/free-solid-svg-icons/faArrowA
 import ToolbarItem from './ToolbarItem';
 import useToolbarStyles from './ToolbarStyles';
 import ToolbarCenterItem from './ToolbarCenterItem';
+import { faCog } from '@fortawesome/free-solid-svg-icons/faCog';
 
 const Toolbar = ({ activeRepository }) => {
     const classes = useToolbarStyles();
 
     return (
         <div className={classes.toolbar}>
-            <ToolbarItem
-                icon={<FontAwesomeIcon icon={faArrowAltCircleDown} />}
-                label="Pull"
-            />
+            <div className={classes.left}>
+                <ToolbarItem
+                    icon={<FontAwesomeIcon icon={faArrowAltCircleDown} />}
+                    label="Pull"
+                />
+            </div>
             <ToolbarCenterItem activeRepository={activeRepository}/>
+            <div className={classes.right}>
+                <ToolbarItem
+                    icon={<FontAwesomeIcon icon={faCog} />}
+                    label="Settings"
+                />
+            </div>
         </div>
     );
 };
