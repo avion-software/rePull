@@ -1,14 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
+import useToolbarItemStyles from './ToolbarItemStyles';
 
 const ToolbarItem = ({ icon, label }) => {
+    const classes = useToolbarItemStyles();
+
     return (
-        <div>
-            <div>
+        <div className={classes.root}>
+            <div className={classes.icon}>
                 {icon}
             </div>
-            <Typography>
+            <Typography className={classes.label}>
                 {label}
             </Typography>
         </div>
