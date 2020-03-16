@@ -4,8 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowAltCircleDown } from '@fortawesome/free-solid-svg-icons/faArrowAltCircleDown';
 import ToolbarItem from './ToolbarItem';
 import useToolbarStyles from './ToolbarStyles';
+import ToolbarCenterItem from './ToolbarCenterItem';
 
-const Toolbar = props => {
+const Toolbar = ({ activeRepository }) => {
     const classes = useToolbarStyles();
 
     return (
@@ -14,6 +15,7 @@ const Toolbar = props => {
                 icon={<FontAwesomeIcon icon={faArrowAltCircleDown} />}
                 label="Pull"
             />
+            <ToolbarCenterItem activeRepository={activeRepository}/>
         </div>
     );
 };
