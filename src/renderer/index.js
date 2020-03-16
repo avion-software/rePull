@@ -1,26 +1,25 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { ipcRenderer } from 'electron';
 import { Provider } from 'react-redux';
-import request from './utils/api/request';
+import { ThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+
 import store from './store';
 import { loadRepositories } from './store/reducers/repositories/actions';
 import RepositoryListContainer from './components/repository-list/RepositoryListContainer';
-
-ipcRenderer.send('update-notify-value', 'Hello World');
-
-request('/repositories').then(async (res) => {
-    console.log(res, await res.json());
-});
+import theme from './constants/theme';
 
 store.dispatch(loadRepositories());
  
 const Index = () => {
     return (
-        <Provider store={store}>
-            <div>Hello React!</div>
-            <RepositoryListContainer/>
-        </Provider>
+        <ThemeProvider theme={theme}>
+            <Provider store={store}>
+                <div>Hello React!</div>
+                <RepositoryListContainer/>
+            </Provider>
+            <CssBaseline />
+        </ThemeProvider>
     );
 };
  
