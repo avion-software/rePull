@@ -1,3 +1,4 @@
+import path from 'path';
 import crypto from 'crypto';
 import SimpleGit from 'simple-git/promise';
 
@@ -57,6 +58,7 @@ export default class Repository {
     toJSON() {
         return {
             id: this.#id,
+            name: path.basename(this.#path),
             path: this.#path,
         };
     }
