@@ -1,4 +1,4 @@
-import { PropTypes } from '@material-ui/core';
+import PropTypes from 'prop-types';
 
 export const REPOSITORY_SHAPE = {
     id: PropTypes.string,
