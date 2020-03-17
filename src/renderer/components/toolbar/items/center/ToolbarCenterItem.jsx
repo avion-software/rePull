@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { REPOSITORY_SHAPE } from '../../constants/shapes';
+import { REPOSITORY_SHAPE } from '../../../../constants/shapes';
 import Typography from '@material-ui/core/Typography';
 import useToolbarCenterItemStyles from './ToolbarCenterItemStyles';
 import clsx from 'clsx';
