@@ -7,6 +7,7 @@ import useToolbarStyles from './ToolbarStyles';
 import ToolbarCenterItem from './ToolbarCenterItem';
 import { faCog } from '@fortawesome/free-solid-svg-icons/faCog';
 import FetchItemContainer from './items/fetch/FetchItemContainer';
+import PullItemContainer from './items/pull/PullItemContainer';
 
 const Toolbar = ({ activeRepository }) => {
     const classes = useToolbarStyles();
@@ -17,6 +18,7 @@ const Toolbar = ({ activeRepository }) => {
                 {activeRepository && (
                     <>
                         <FetchItemContainer repository={activeRepository}/>
+                        <PullItemContainer repository={activeRepository}/>
                     </>
                 )}
             </div>
