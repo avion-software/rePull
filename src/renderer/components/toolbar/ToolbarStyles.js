@@ -8,8 +8,10 @@ const useToolbarStyles = makeStyles((theme) => ({
     },
     left: {
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'row',
         flexGrow: 1,
+        flexShrink: 0,
+        flexBasis: 0,
     },
     center: {
         flexShrink: 0,
@@ -17,9 +19,11 @@ const useToolbarStyles = makeStyles((theme) => ({
     },
     right: {
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'row',
         flexGrow: 1,
-        alignItems: 'flex-end',
+        flexShrink: 0,
+        flexBasis: 0,
+        justifyContent: 'flex-end',
     },
 }));
 
