@@ -29,13 +29,23 @@ export default class Server {
             },
         };
 
-        const next = () => {};
-        await this.#router.routes()(ctx, next);
-        event.reply('response', {
-            id: data.id,
-            body: ctx.body,
-            headers: responseHeaders,
-            statusCode: ctx.status,
-        });
+        try {
+            const next = () => {
+            };
+            await this.#router.routes()(ctx, next);
+            event.reply('response', {
+                id: data.id,
+                body: ctx.body,
+                headers: responseHeaders,
+                statusCode: ctx.status,
+            });
+        } catch (ex) {
+            event.reply('response', {
+                id: data.id,
+                body: ex,
+                headers: {},
+                statusCode: 500,
+            });
+        }
     }
 }
