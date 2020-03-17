@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Badge from '@material-ui/core/Badge';
 import ToolbarItem from './ToolbarItem';
+import CustomBadge from '../badge/CustomBadge';
 
 const ToolbarBadgeItem = ({ icon, label, onClick, badge, badgeColor }) => (
     <ToolbarItem
         icon={badge ? (
-            <Badge badgeContent={badge} color={badgeColor}>
+            <CustomBadge badgeContent={badge} badgeColor={badgeColor}>
                 {icon}
-            </Badge>
+            </CustomBadge>
         ) : icon}
         label={label}
         onClick={onClick}
