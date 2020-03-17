@@ -6,7 +6,7 @@ import pushRepository from '../../../../api/repository/push';
 
 const PushItemContainer = ({ repository }) => {
     const handleClick = useCallback(async () => {
-        await pushRepository(repository.id, 'origin', 'master');
+        await pushRepository(repository, { remote: 'origin', branch: 'master' });
         console.log('pushed');
     }, [repository]);
 
