@@ -9,15 +9,11 @@ const mapStateToProps = (state) => ({
     activeRepository: getRepository(state, getActiveRepository(state)),
 });
 
-const ToolbarContainer = ({ activeRepository }) => {
-    console.log('activeRepository', activeRepository);
-
-    return (
-        <Toolbar
-            activeRepository={activeRepository}
-        />
-    );
-};
+const ToolbarContainer = ({ activeRepository }) => (
+    <Toolbar
+        activeRepository={activeRepository}
+    />
+);
 
 ToolbarContainer.propTypes = {
 
