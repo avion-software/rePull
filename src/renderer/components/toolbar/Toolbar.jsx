@@ -19,7 +19,10 @@ const Toolbar = ({ activeRepository, activeRepositoryStatus }) => {
                 {activeRepository && (
                     <>
                         <FetchItemContainer repository={activeRepository}/>
-                        <PullItemContainer repository={activeRepository}/>
+                        <PullItemContainer
+                            repository={activeRepository}
+                            repositoryStatus={activeRepositoryStatus}
+                        />
                         <PushItemContainer
                             repository={activeRepository}
                             repositoryStatus={activeRepositoryStatus}
