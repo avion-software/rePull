@@ -8,8 +8,6 @@ import clsx from 'clsx';
 const ToolbarCenterItem = ({ activeRepository, activeRepositoryStatus, className }) => {
     const classes = useToolbarCenterItemStyles();
 
-    console.log('activeRepositoryStatus', activeRepositoryStatus);
-
     return (
         <div className={clsx(className, classes.root)}>
             <Typography variant="h1" className={classes.name}>

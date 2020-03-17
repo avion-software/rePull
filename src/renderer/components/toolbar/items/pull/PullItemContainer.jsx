@@ -7,7 +7,6 @@ import pullRepository from '../../../../api/repository/pull';
 const PullItemContainer = ({ repository, repositoryStatus }) => {
     const handleClick = useCallback(async () => {
         await pullRepository(repository);
-        console.log('pulled');
     }, [repository]);
 
     return (
