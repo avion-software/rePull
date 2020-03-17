@@ -10,7 +10,7 @@ import FetchItemContainer from './items/fetch/FetchItemContainer';
 import PullItemContainer from './items/pull/PullItemContainer';
 import PushItemContainer from './items/push/PushItemContainer';
 
-const Toolbar = ({ activeRepository }) => {
+const Toolbar = ({ activeRepository, activeRepositoryStatus }) => {
     const classes = useToolbarStyles();
 
     return (
@@ -24,7 +24,10 @@ const Toolbar = ({ activeRepository }) => {
                     </>
                 )}
             </div>
-            <ToolbarCenterItem activeRepository={activeRepository}/>
+            <ToolbarCenterItem
+                activeRepository={activeRepository}
+                activeRepositoryStatus={activeRepositoryStatus}
+            />
             <div className={classes.right}>
                 <ToolbarItem
                     icon={<FontAwesomeIcon icon={faCog} />}

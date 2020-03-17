@@ -5,8 +5,10 @@ import Typography from '@material-ui/core/Typography';
 import useToolbarCenterItemStyles from './ToolbarCenterItemStyles';
 import clsx from 'clsx';
 
-const ToolbarCenterItem = ({ activeRepository, className }) => {
+const ToolbarCenterItem = ({ activeRepository, activeRepositoryStatus, className }) => {
     const classes = useToolbarCenterItemStyles();
+
+    console.log('activeRepositoryStatus', activeRepositoryStatus);
 
     return (
         <div className={clsx(className, classes.root)}>
