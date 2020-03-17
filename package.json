@@ -8,7 +8,7 @@
     "build:main": "webpack --config ./config/webpack/main.config.js",
     "build": "concurrently \"npm run build:main\" \"npm run build:renderer\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run build:main && concurrently \"npm run build:renderer -- --watch\" \"electron dist/electron.js\""
+    "start": "npm run build:main && concurrently \"npm run build:renderer -- --watch\" \"electron build/main/electron.js\""
   },
   "keywords": [],
   "author": "",
@@ -46,5 +46,9 @@
     "reselect": "4.0.0",
     "simple-git": "1.131.0",
     "uuid": "7.0.2"
+  },
+  "build": {
+    "appId": "org.repull",
+    "files": ["./dist/**/*"]
   }
 }

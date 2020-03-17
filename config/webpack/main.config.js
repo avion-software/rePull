@@ -3,7 +3,7 @@ const webpackMerge = require('webpack-merge');
 const baseConfig = require('./base.config');
 
 const ROOT_PATH = path.resolve(__dirname, '..', '..');
-const OUTPUT_PATH = path.resolve(ROOT_PATH, 'dist');
+const OUTPUT_PATH = path.resolve(ROOT_PATH, 'build', 'main');
 
 module.exports = webpackMerge(baseConfig, {
     mode: 'development',

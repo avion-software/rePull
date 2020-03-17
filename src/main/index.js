@@ -24,7 +24,7 @@ function createWindow () {
   createRepositoryEndpoints(mainServer);
  
   // and load the index.html of the app.
-  win.loadFile('index.html');
+  win.loadFile('../renderer/index.html');
 }
  
 app.on('ready', createWindow);
