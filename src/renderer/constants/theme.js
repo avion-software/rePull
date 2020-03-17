@@ -9,6 +9,11 @@ const theme = createMuiTheme({
         secondary: {
             main: '#311b92',
         },
+        background: {
+            paper: '#424242',
+            default: '#303030',
+            toolbar: '#202020',
+        }
     },
 });
 

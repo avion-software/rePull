@@ -5,9 +5,9 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 import store from './store';
-import { loadRepositories } from './store/reducers/repositories/actions';
-import RepositoryListContainer from './components/repository-list/RepositoryListContainer';
 import theme from './constants/theme';
+import { loadRepositories } from './store/reducers/repositories/actions';
+import App from './components/App';
 
 store.dispatch(loadRepositories());
  
@@ -15,8 +15,7 @@ const Index = () => {
     return (
         <ThemeProvider theme={theme}>
             <Provider store={store}>
-                <div>Hello React!</div>
-                <RepositoryListContainer/>
+                <App />
             </Provider>
             <CssBaseline />
         </ThemeProvider>

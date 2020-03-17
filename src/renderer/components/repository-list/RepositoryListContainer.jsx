@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { produce } from 'immer';
+
 import { getRepositories } from '../../store/reducers/repositories/selectors';
 import { REPOSITORY_SHAPE } from '../../constants/shapes';
 import RepositoryList from './RepositoryList';
@@ -14,12 +16,19 @@ const mapDispatchToProps = ({
     setActiveRepository: setActiveRepositoryAction,
 });
 
-const RepositoryListContainer = ({ repositories, setActiveRepository }) => (
-    <RepositoryList
-        onSetActiveRepository={setActiveRepository}
-        repositories={repositories}
-    />
-);
+const RepositoryListContainer = ({ repositories, setActiveRepository }) => {
+    const orderedRepositories = useMemo(
+        () => produce(repositories, (repos) => repos.sort((a, b) => a.name.localeCompare(b.name))),
+        [repositories],
+    );
+
+    return (
+        <RepositoryList
+            onSetActiveRepository={setActiveRepository}
+            repositories={orderedRepositories}
+        />
+    );
+};
 
 RepositoryListContainer.propTypes = {
     repositories: PropTypes.arrayOf(PropTypes.shape(REPOSITORY_SHAPE)),
