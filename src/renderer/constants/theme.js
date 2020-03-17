@@ -1,4 +1,5 @@
 import { createMuiTheme } from '@material-ui/core';
+import { green, red } from '@material-ui/core/colors';
 
 const theme = createMuiTheme({
     palette: {
@@ -13,7 +14,11 @@ const theme = createMuiTheme({
             paper: '#424242',
             default: '#303030',
             toolbar: '#202020',
-        }
+        },
+        badge: {
+            pull: green[500],
+            push: red[500],
+        },
     },
 });
 

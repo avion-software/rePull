@@ -4,14 +4,16 @@ import PullItem from './PullItem';
 import { REPOSITORY_SHAPE } from '../../../../constants/shapes';
 import pullRepository from '../../../../api/repository/pull';
 
-const PullItemContainer = ({ repository }) => {
+const PullItemContainer = ({ repository, repositoryStatus }) => {
     const handleClick = useCallback(async () => {
         await pullRepository(repository);
-        console.log('pulled');
     }, [repository]);
 
     return (
-        <PullItem onClick={handleClick}/>
+        <PullItem
+            onClick={handleClick}
+            changes={repositoryStatus?.behind}
+        />
     );
 };
 

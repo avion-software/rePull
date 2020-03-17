@@ -4,13 +4,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowAltCircleDown } from '@fortawesome/free-solid-svg-icons/faArrowAltCircleDown';
 import ToolbarItem from './ToolbarItem';
 import useToolbarStyles from './ToolbarStyles';
-import ToolbarCenterItem from './ToolbarCenterItem';
+import ToolbarCenterItem from './items/center/ToolbarCenterItem';
 import { faCog } from '@fortawesome/free-solid-svg-icons/faCog';
 import FetchItemContainer from './items/fetch/FetchItemContainer';
 import PullItemContainer from './items/pull/PullItemContainer';
 import PushItemContainer from './items/push/PushItemContainer';
 
-const Toolbar = ({ activeRepository }) => {
+const Toolbar = ({ activeRepository, activeRepositoryStatus }) => {
     const classes = useToolbarStyles();
 
     return (
@@ -19,12 +19,21 @@ const Toolbar = ({ activeRepository }) => {
                 {activeRepository && (
                     <>
                         <FetchItemContainer repository={activeRepository}/>
-                        <PullItemContainer repository={activeRepository}/>
-                        <PushItemContainer repository={activeRepository}/>
+                        <PullItemContainer
+                            repository={activeRepository}
+                            repositoryStatus={activeRepositoryStatus}
+                        />
+                        <PushItemContainer
+                            repository={activeRepository}
+                            repositoryStatus={activeRepositoryStatus}
+                        />
                     </>
                 )}
             </div>
-            <ToolbarCenterItem activeRepository={activeRepository}/>
+            <ToolbarCenterItem
+                activeRepository={activeRepository}
+                activeRepositoryStatus={activeRepositoryStatus}
+            />
             <div className={classes.right}>
                 <ToolbarItem
                     icon={<FontAwesomeIcon icon={faCog} />}
