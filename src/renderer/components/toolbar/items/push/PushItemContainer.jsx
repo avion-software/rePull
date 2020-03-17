@@ -4,14 +4,17 @@ import PushItem from './PushItem';
 import { REPOSITORY_SHAPE } from '../../../../constants/shapes';
 import pushRepository from '../../../../api/repository/push';
 
-const PushItemContainer = ({ repository }) => {
+const PushItemContainer = ({ repository, repositoryStatus }) => {
     const handleClick = useCallback(async () => {
         await pushRepository(repository, { remote: 'origin', branch: 'master' });
         console.log('pushed');
     }, [repository]);
 
     return (
-        <PushItem onClick={handleClick}/>
+        <PushItem
+            onClick={handleClick}
+            changes={repositoryStatus?.ahead}
+        />
     );
 };
 
