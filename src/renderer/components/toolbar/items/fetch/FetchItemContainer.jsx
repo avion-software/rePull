@@ -6,7 +6,7 @@ import fetchRepository from '../../../../api/repository/fetch';
 
 const FetchItemContainer = ({ repository }) => {
     const handleClick = useCallback(async () => {
-        await fetchRepository(repository.id);
+        await fetchRepository(repository);
         console.log('fetched');
     }, [repository]);
 
