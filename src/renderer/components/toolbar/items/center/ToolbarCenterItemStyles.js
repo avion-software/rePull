@@ -13,7 +13,16 @@ const useToolbarCenterItemStyles = makeStyles((theme) => ({
     },
     name: {
         fontSize: 24,
-    }
+        color: theme.palette.primary.main,
+        textShadow: '0 0 5px rgba(0, 0, 0, 0.6)',
+        fontWeight: 'bold',
+    },
+    branch: {
+        fontSize: 14,
+        color: 'rgba(255, 255, 255, 0.6)',
+        height: 14,
+        fontStyle: 'italic',
+    },
 }));
 
 export default useToolbarCenterItemStyles;

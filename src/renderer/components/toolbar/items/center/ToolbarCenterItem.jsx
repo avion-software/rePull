@@ -15,6 +15,9 @@ const ToolbarCenterItem = ({ activeRepository, activeRepositoryStatus, className
             <Typography variant="h1" className={classes.name}>
                 {activeRepository?.name}
             </Typography>
+            <Typography className={classes.branch}>
+                {activeRepositoryStatus?.currentBranch}
+            </Typography>
         </div>
     );
 };
