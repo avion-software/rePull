@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowAltCircleDown } from '@fortawesome/free-solid-svg-icons/faArrowAltCircleDown';
 import ToolbarItem from './ToolbarItem';
 import useToolbarStyles from './ToolbarStyles';
-import ToolbarCenterItem from './ToolbarCenterItem';
+import ToolbarCenterItem from './items/center/ToolbarCenterItem';
 import { faCog } from '@fortawesome/free-solid-svg-icons/faCog';
 import FetchItemContainer from './items/fetch/FetchItemContainer';
 import PullItemContainer from './items/pull/PullItemContainer';
