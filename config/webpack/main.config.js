@@ -11,11 +11,12 @@ module.exports = (environment = {}, args) => webpackMerge(baseConfig(environment
         electron: path.resolve(ROOT_PATH, 'src', 'main', 'index.js'),
     },
     target: 'electron-main',
+    node: {
+        __dirname: !environment.prod,
+        __filename: !environment.prod,
+    },
     output: {
         path: OUTPUT_PATH,
         filename: '[name].js'
-    },
-    node: {
-        __dirname: true,
     }
 }));
