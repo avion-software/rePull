@@ -6,7 +6,7 @@ const baseConfig = require('./base.config');
 const ROOT_PATH = path.resolve(__dirname, '..', '..');
 const OUTPUT_PATH = path.resolve(ROOT_PATH, 'build', 'renderer');
 
-module.exports = webpackMerge(baseConfig, {
+module.exports = (environment = {}, args) => webpackMerge(baseConfig(environment, args), {
     mode: 'development',
     entry: path.resolve(ROOT_PATH, 'src', 'renderer', 'index.js'),
     target: 'electron-renderer',

@@ -1,4 +1,5 @@
-module.exports = {
+module.exports = ({ prod = true, dev = false } = { }, args) => ({
+    mode: prod ? 'production' : 'development',
     devtool: 'source-map',
     module: {
         rules: [{
@@ -9,4 +10,4 @@ module.exports = {
             }]
         }],
     },
-};
+});

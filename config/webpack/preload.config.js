@@ -8,14 +8,19 @@ const OUTPUT_PATH = path.resolve(ROOT_PATH, 'build', 'main');
 
 module.exports = (environment = {}, args) => webpackMerge(baseConfig(environment, args), ({
     entry: {
-        electron: path.resolve(ROOT_PATH, 'src', 'main', 'index.js'),
+        preload: path.resolve(ROOT_PATH, 'src', 'main', 'preload.js'),
     },
-    target: 'electron-main',
+    target: 'electron-preload',
     output: {
         path: OUTPUT_PATH,
         filename: '[name].js'
     },
     node: {
         __dirname: true,
-    }
+    },
+    plugins: [
+        new webpack.DefinePlugin({
+            __TEST__: JSON.stringify(true),
+        }),
+    ]
 }));
