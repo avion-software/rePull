@@ -2,7 +2,7 @@
   "name": "repull",
   "version": "0.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./build/main/electron.js",
   "scripts": {
     "build:renderer": "webpack --config ./config/webpack/renderer.config.js",
     "build:main": "webpack --config ./config/webpack/main.config.js",
@@ -15,7 +15,10 @@
     "build:dev": "concurrently \"npm run build:main:dev\" \"npm run build:renderer\" \"npm run build:preload:dev\"",
     "build:prod": "concurrently \"npm run build:main:prod\" \"npm run build:renderer\" \"npm run build:preload:prod\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run build:main:dev && concurrently \"npm run build:preload:dev -- --watch\" \"npm run build:renderer -- --watch\" \"electron build/main/electron.js\""
+    "start": "npm run build:main:dev && concurrently \"npm run build:preload:dev -- --watch\" \"npm run build:renderer -- --watch\" \"electron build/main/electron.js\"",
+    "pack": "npm run build && electron-builder --dir",
+    "dist": "npm run build && electron-builder",
+    "postinstall": "electron-builder install-app-deps"
   },
   "keywords": [],
   "author": "",
