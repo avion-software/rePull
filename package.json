@@ -6,9 +6,16 @@
   "scripts": {
     "build:renderer": "webpack --config ./config/webpack/renderer.config.js",
     "build:main": "webpack --config ./config/webpack/main.config.js",
-    "build": "concurrently \"npm run build:main\" \"npm run build:renderer\"",
+    "build:main:prod": "npm run build:main -- --env.prod",
+    "build:main:dev": "npm run build:main -- --env.dev",
+    "build:preload": "webpack --config ./config/webpack/preload.config.js",
+    "build:preload:prod": "npm run build:preload -- --env.prod",
+    "build:preload:dev": "npm run build:preload -- --env.dev",
+    "build": "npm run build:prod",
+    "build:dev": "concurrently \"npm run build:main:dev\" \"npm run build:renderer\" \"npm run build:preload:dev\"",
+    "build:prod": "concurrently \"npm run build:main:prod\" \"npm run build:renderer\" \"npm run build:preload:prod\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run build:main && concurrently \"npm run build:renderer -- --watch\" \"electron build/main/electron.js\""
+    "start": "npm run build:main:dev && concurrently \"npm run build:preload:dev -- --watch\" \"npm run build:renderer -- --watch\" \"electron build/main/electron.js\""
   },
   "keywords": [],
   "author": "",
@@ -49,6 +56,6 @@
   },
   "build": {
     "appId": "org.repull",
-    "files": ["./dist/**/*"]
+    "files": ["build/**/*"]
   }
 }
