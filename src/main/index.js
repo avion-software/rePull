@@ -1,5 +1,6 @@
 import { app, BrowserWindow } from 'electron';
-import { resolve } from 'path';
+import url from 'url';
+import path from 'path';
 import MainServer from './utils/api/MainServer';
 import createRepositoryEndpoints from './api/repositories';
 import {
@@ -16,7 +17,7 @@ function createWindow () {
     title: MAIN_WINDOW_DEFAULT_TITLE,
     webPreferences: {
       nodeIntegration: false,
-      preload: resolve(__dirname, 'preload.js'),
+      preload: path.resolve(__dirname, '..', '..', 'build', 'main', 'preload.js'),
     }
   });
 
@@ -24,7 +25,11 @@ function createWindow () {
   createRepositoryEndpoints(mainServer);
  
   // and load the index.html of the app.
-  win.loadFile('../renderer/index.html');
+  win.loadURL(url.format({
+    pathname: path.join(__dirname, '..', '..', 'build', 'renderer', 'index.html'),
+    protocol: 'file:',
+    slashes: true,
+  }));
 }
  
 app.on('ready', createWindow);
