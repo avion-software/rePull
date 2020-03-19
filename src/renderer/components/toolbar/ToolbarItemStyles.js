@@ -20,6 +20,11 @@ const useToolbarItemStyles = makeStyles((theme) => ({
             opacity: 1,
         },
     },
+    iconWrapper: {
+        display: 'flex',
+        flexGrow: 1,
+        alignItems: 'flex-end',
+    },
     icon: {
         fontSize: 32,
         opacity: 0.5,
@@ -29,6 +34,8 @@ const useToolbarItemStyles = makeStyles((theme) => ({
     label: {
         fontSize: 14,
         opacity: 0.5,
+
+        padding: '5px 0',
 
         transition: 'opacity .3s',
     },

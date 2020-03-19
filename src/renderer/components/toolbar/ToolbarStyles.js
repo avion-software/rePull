@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core';
 const useToolbarStyles = makeStyles((theme) => ({
     toolbar: {
         display: 'flex',
-        height: 80,
+        height: 90,
         backgroundColor: theme.palette.background.toolbar,
     },
     left: {

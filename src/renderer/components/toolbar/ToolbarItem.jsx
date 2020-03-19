@@ -11,8 +11,10 @@ const ToolbarItem = ({ icon, label, onClick }) => {
             className={classes.root}
             onClick={onClick}
         >
-            <div className={classes.icon}>
-                {icon}
+            <div className={classes.iconWrapper}>
+                <div className={classes.icon}>
+                    {icon}
+                </div>
             </div>
             <Typography className={classes.label}>
                 {label}
