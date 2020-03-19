@@ -1,19 +1,35 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import PullItem from './PullItem';
 import { REPOSITORY_SHAPE, REPOSITORY_STATUS_SHAPE } from '../../../../constants/shapes';
 import pullRepository from '../../../../api/repository/pull';
+import PullDialog from './PullDialog';
 
 const PullItemContainer = ({ repository, repositoryStatus }) => {
+    const [showDialog, setShowDialog] = useState(false);
     const handleClick = useCallback(async () => {
+        setShowDialog(true);
+    }, [setShowDialog]);
+
+    const handleCloseDialog = useCallback(() => setShowDialog(false), [setShowDialog]);
+
+    const handleConfirmDialog = useCallback(async () => {
         await pullRepository(repository);
-    }, [repository]);
+        setShowDialog(false);
+    }, [setShowDialog, repository]);
 
     return (
-        <PullItem
-            onClick={handleClick}
-            changes={repositoryStatus?.behind}
-        />
+        <>
+            <PullDialog
+                onClose={handleCloseDialog}
+                onConfirm={handleConfirmDialog}
+                show={showDialog}
+            />
+            <PullItem
+                onClick={handleClick}
+                changes={repositoryStatus?.behind}
+            />
+        </>
     );
 };
 
