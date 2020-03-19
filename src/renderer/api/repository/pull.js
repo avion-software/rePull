@@ -1,8 +1,8 @@
 import request from '../../utils/api/request';
 import sendNotification from '../notifications/send';
 
-export default async function pullRepository(repository, notification = true) {
-    const res = await request(`/repositories/${repository.id}/pull`, 'POST');
+export default async function pullRepository(repository, options = {}, notification = true) {
+    const res = await request(`/repositories/${repository.id}/pull`, 'POST', options);
 
     if (res.statusCode === 200) {
         const json = await res.json();

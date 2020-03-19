@@ -13,9 +13,9 @@ const PullItemContainer = ({ repository, repositoryStatus }) => {
 
     const handleCloseDialog = useCallback(() => setShowDialog(false), [setShowDialog]);
 
-    const handleConfirmDialog = useCallback(async () => {
-        await pullRepository(repository);
+    const handleConfirmDialog = useCallback(async (options) => {
         setShowDialog(false);
+        await pullRepository(repository, options);
     }, [setShowDialog, repository]);
 
     return (

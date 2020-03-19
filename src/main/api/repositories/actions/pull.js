@@ -11,10 +11,16 @@ export default async function pull(ctx) {
 
     let pullResponse;
     if (ctx.request.body?.remote && ctx.request.body?.branch) {
-        const { remote, branch } = ctx.request.body;
-        pullResponse = await repository.pull(remote, branch);
+        const { remote, branch, rebase } = ctx.request.body;
+        pullResponse = await repository.pull(remote, branch, {
+            rebase,
+        });
     } else {
-        pullResponse = await repository.pull();
+        const { rebase } = ctx.request.body;
+
+        pullResponse = await repository.pull({
+            rebase,
+        });
     }
 
     ctx.body = {
