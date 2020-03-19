@@ -10,16 +10,14 @@ import { loadRepositories } from './store/reducers/repositories/actions';
 import App from './components/App';
 
 store.dispatch(loadRepositories());
- 
-const Index = () => {
-    return (
-        <ThemeProvider theme={theme}>
-            <Provider store={store}>
-                <App />
-            </Provider>
-            <CssBaseline />
-        </ThemeProvider>
-    );
-};
- 
+
+const Index = () => (
+    <ThemeProvider theme={theme}>
+        <Provider store={store}>
+            <App />
+        </Provider>
+        <CssBaseline />
+    </ThemeProvider>
+);
+
 ReactDOM.render(<Index />, document.getElementById('app'));
