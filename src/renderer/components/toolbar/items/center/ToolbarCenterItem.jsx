@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { REPOSITORY_SHAPE } from '../../../../constants/shapes';
-import Typography from '@material-ui/core/Typography';
-import useToolbarCenterItemStyles from './ToolbarCenterItemStyles';
 import clsx from 'clsx';
+import Typography from '@material-ui/core/Typography';
+
+import { REPOSITORY_SHAPE, REPOSITORY_STATUS_SHAPE } from '../../../../constants/shapes';
+import useToolbarCenterItemStyles from './ToolbarCenterItemStyles';
 
 const ToolbarCenterItem = ({ activeRepository, activeRepositoryStatus, className }) => {
     const classes = useToolbarCenterItemStyles();
@@ -22,11 +23,14 @@ const ToolbarCenterItem = ({ activeRepository, activeRepositoryStatus, className
 
 ToolbarCenterItem.propTypes = {
     activeRepository: PropTypes.shape(REPOSITORY_SHAPE),
+    activeRepositoryStatus: PropTypes.shape(REPOSITORY_STATUS_SHAPE),
     className: PropTypes.string,
 };
 
 ToolbarCenterItem.defaultProps = {
     className: null,
+    activeRepository: null,
+    activeRepositoryStatus: null,
 };
 
 export default ToolbarCenterItem;

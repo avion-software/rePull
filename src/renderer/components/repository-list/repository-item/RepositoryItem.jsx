@@ -25,8 +25,12 @@ const RepositoryItem = ({ repository, onClick }) => {
 };
 
 RepositoryItem.propTypes = {
-    repository: PropTypes.shape(REPOSITORY_SHAPE),
+    repository: PropTypes.shape(REPOSITORY_SHAPE).isRequired,
     onClick: PropTypes.func,
+};
+
+RepositoryItem.defaultProps = {
+    onClick: null,
 };
 
 export default RepositoryItem;

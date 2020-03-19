@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowAltCircleDown } from '@fortawesome/free-solid-svg-icons/faArrowAltCircleDown';
+import { faCog } from '@fortawesome/free-solid-svg-icons/faCog';
+
 import ToolbarItem from './ToolbarItem';
 import useToolbarStyles from './ToolbarStyles';
 import ToolbarCenterItem from './items/center/ToolbarCenterItem';
-import { faCog } from '@fortawesome/free-solid-svg-icons/faCog';
 import FetchItemContainer from './items/fetch/FetchItemContainer';
 import PullItemContainer from './items/pull/PullItemContainer';
 import PushItemContainer from './items/push/PushItemContainer';
+import { REPOSITORY_SHAPE, REPOSITORY_STATUS_SHAPE } from '../../constants/shapes';
 
 const Toolbar = ({ activeRepository, activeRepositoryStatus }) => {
     const classes = useToolbarStyles();
@@ -18,7 +19,7 @@ const Toolbar = ({ activeRepository, activeRepositoryStatus }) => {
             <div className={classes.left}>
                 {activeRepository && (
                     <>
-                        <FetchItemContainer repository={activeRepository}/>
+                        <FetchItemContainer repository={activeRepository} />
                         <PullItemContainer
                             repository={activeRepository}
                             repositoryStatus={activeRepositoryStatus}
@@ -45,7 +46,13 @@ const Toolbar = ({ activeRepository, activeRepositoryStatus }) => {
 };
 
 Toolbar.propTypes = {
+    activeRepository: PropTypes.shape(REPOSITORY_SHAPE),
+    activeRepositoryStatus: PropTypes.shape(REPOSITORY_STATUS_SHAPE),
+};
 
+Toolbar.defaultProps = {
+    activeRepository: null,
+    activeRepositoryStatus: null,
 };
 
 export default Toolbar;

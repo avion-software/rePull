@@ -9,6 +9,7 @@ const selections = (baseState = initialState, action) => produce(baseState, (dra
     switch (action.type) {
         case SET_ACTIVE_REPOSITORY:
             draftState.activeRepository = action.payload;
+            break;
         default:
             break;
     }

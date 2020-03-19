@@ -11,5 +11,5 @@ export const setActiveRepository = (repository) => (dispatch) => {
     dispatch(setActiveRepositoryAction(repository.id));
     window.document.title = `${WINDOW_TITLE_PREFIX}${repository.name}`;
 
-    dispatch(loadRepositoryStatus(repository))
+    dispatch(loadRepositoryStatus(repository));
 };

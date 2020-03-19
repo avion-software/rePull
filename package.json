@@ -14,6 +14,7 @@
     "build": "npm run build:prod",
     "build:dev": "concurrently \"npm run build:main:dev\" \"npm run build:renderer\" \"npm run build:preload:dev\"",
     "build:prod": "concurrently \"npm run build:main:prod\" \"npm run build:renderer\" \"npm run build:preload:prod\"",
+    "test:eslint": "eslint --ext .jsx,.js ./src",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run build:main:dev && concurrently \"npm run build:preload:dev -- --watch\" \"npm run build:renderer -- --watch\" \"electron build/main/electron.js\"",
     "pack": "npm run build && electron-builder --dir",
@@ -29,10 +30,18 @@
     "@babel/plugin-proposal-class-properties": "7.8.3",
     "@babel/preset-env": "^7.8.7",
     "@babel/preset-react": "^7.8.3",
+    "babel-eslint": "10.1.0",
     "babel-loader": "^8.0.6",
     "concurrently": "5.1.0",
     "electron": "^8.1.0",
     "electron-builder": "22.4.1",
+    "eslint": "6.8.0",
+    "eslint-config-airbnb": "18.1.0",
+    "eslint-config-airbnb-base": "14.1.0",
+    "eslint-plugin-import": "2.20.1",
+    "eslint-plugin-jsx-a11y": "6.2.3",
+    "eslint-plugin-react": "7.19.0",
+    "eslint-plugin-react-hooks": "2.5.0",
     "html-webpack-plugin": "^3.2.0",
     "prop-types": "15.7.2",
     "react": "^16.13.0",
@@ -59,6 +68,8 @@
   },
   "build": {
     "appId": "org.repull",
-    "files": ["build/**/*"]
+    "files": [
+      "build/**/*"
+    ]
   }
 }

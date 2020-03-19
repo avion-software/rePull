@@ -18,7 +18,7 @@ const useToolbarItemStyles = makeStyles((theme) => ({
 
         '&:hover $label, &:hover $icon': {
             opacity: 1,
-        }
+        },
     },
     icon: {
         fontSize: 32,

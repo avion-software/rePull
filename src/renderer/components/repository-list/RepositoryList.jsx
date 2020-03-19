@@ -21,4 +21,9 @@ RepositoryList.propTypes = {
     onSetActiveRepository: PropTypes.func,
 };
 
+RepositoryList.defaultProps = {
+    repositories: [],
+    onSetActiveRepository: null,
+};
+
 export default RepositoryList;

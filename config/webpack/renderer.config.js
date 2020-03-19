@@ -8,7 +8,7 @@ const OUTPUT_PATH = path.resolve(ROOT_PATH, 'build', 'renderer');
 
 module.exports = (environment = {}, args) => webpackMerge(baseConfig(environment, args), {
     mode: 'development',
-    entry: path.resolve(ROOT_PATH, 'src', 'renderer', 'index.js'),
+    entry: path.resolve(ROOT_PATH, 'src', 'renderer', 'index.jsx'),
     target: 'electron-renderer',
     resolve: {
         extensions: ['.js', '.jsx']

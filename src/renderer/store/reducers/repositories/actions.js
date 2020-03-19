@@ -6,7 +6,7 @@ export const setRepositories = (repositories) => ({
     payload: repositories,
 });
 
-export const loadRepositories = ()  => async (dispatch) => {
+export const loadRepositories = () => async (dispatch) => {
     try {
         const res = await listRepositories();
         dispatch(setRepositories(res));

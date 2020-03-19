@@ -10,7 +10,7 @@ const FetchItemContainer = ({ repository }) => {
     }, [repository]);
 
     return (
-        <FetchItem onClick={handleClick}/>
+        <FetchItem onClick={handleClick} />
     );
 };
 

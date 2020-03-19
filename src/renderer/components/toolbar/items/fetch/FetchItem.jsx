@@ -5,15 +5,13 @@ import { faArrowAltCircleDown } from '@fortawesome/free-regular-svg-icons/faArro
 
 import ToolbarItem from '../../ToolbarItem';
 
-const FetchItem = ({ onClick }) => {
-    return (
-        <ToolbarItem
-            onClick={onClick}
-            icon={<FontAwesomeIcon icon={faArrowAltCircleDown} />}
-            label="Fetch"
-        />
-    );
-};
+const FetchItem = ({ onClick }) => (
+    <ToolbarItem
+        onClick={onClick}
+        icon={<FontAwesomeIcon icon={faArrowAltCircleDown} />}
+        label="Fetch"
+    />
+);
 
 FetchItem.propTypes = {
     onClick: PropTypes.func.isRequired,

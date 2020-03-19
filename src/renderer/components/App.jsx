@@ -12,14 +12,13 @@ const App = () => {
                 <ToolbarContainer />
             </div>
             <div className={classes.main}>
-                <RepositoryListContainer/>
+                <RepositoryListContainer />
             </div>
         </div>
     );
 };
 
 App.propTypes = {
-
 };
 
 export default App;
