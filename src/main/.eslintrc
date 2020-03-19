@@ -1,0 +1,14 @@
+{
+  "env": {
+    "browser": false,
+    "node": true,
+    "es6": true
+  },
+  "globals": {
+  },
+  "parser": "babel-eslint",
+  "rules": {
+    "indent": ["error", 4, { "SwitchCase": 1 }]
+  },
+  "extends": "airbnb-base"
+}
