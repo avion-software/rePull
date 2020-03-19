@@ -22,6 +22,11 @@ const PullItem = ({ onClick, changes }) => {
 
 PullItem.propTypes = {
     onClick: PropTypes.func.isRequired,
+    changes: PropTypes.number,
+};
+
+PullItem.defaultProps = {
+    changes: 0,
 };
 
 export default PullItem;

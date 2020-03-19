@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowAltCircleUp } from '@fortawesome/free-solid-svg-icons/faArrowAltCircleUp';
+import useTheme from '@material-ui/core/styles/useTheme';
 
 import ToolbarBadgeItem from '../../ToolbarBadgeItem';
-import useTheme from '@material-ui/core/styles/useTheme';
 
 const PushItem = ({ onClick, changes }) => {
     const theme = useTheme();
@@ -22,6 +22,11 @@ const PushItem = ({ onClick, changes }) => {
 
 PushItem.propTypes = {
     onClick: PropTypes.func.isRequired,
+    changes: PropTypes.number,
+};
+
+PushItem.defaultProps = {
+    changes: 0,
 };
 
 export default PushItem;

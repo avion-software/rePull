@@ -23,6 +23,8 @@ const ToolbarItem = ({ icon, label, onClick }) => {
 
 ToolbarItem.propTypes = {
     onClick: PropTypes.func,
+    icon: PropTypes.node.isRequired,
+    label: PropTypes.string.isRequired,
 };
 
 ToolbarItem.defaultProps = {

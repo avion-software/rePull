@@ -9,10 +9,10 @@ export default class Repository {
 
     #simpleGit;
 
-    constructor(path) {
-        this.#id = crypto.createHash('md5').update(path).digest('hex');
-        this.#path = path;
-        this.#simpleGit = SimpleGit(path);
+    constructor(pPath) {
+        this.#id = crypto.createHash('md5').update(pPath).digest('hex');
+        this.#path = pPath;
+        this.#simpleGit = SimpleGit(pPath);
     }
 
     async isGitRepo() {
@@ -24,7 +24,7 @@ export default class Repository {
     }
 
     async status() {
-        return await this.#simpleGit.status();
+        return this.#simpleGit.status();
     }
 
     async getId() {

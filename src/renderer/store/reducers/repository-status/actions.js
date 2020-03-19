@@ -9,7 +9,7 @@ export const setRepositoryStatus = (repositoryId, repositoryStatus) => ({
     },
 });
 
-export const loadRepositoryStatus = (repository)  => async (dispatch) => {
+export const loadRepositoryStatus = (repository) => async (dispatch) => {
     try {
         const res = await getRepositoryStatus(repository);
 
@@ -17,5 +17,6 @@ export const loadRepositoryStatus = (repository)  => async (dispatch) => {
             dispatch(setRepositoryStatus(repository.id, res));
         }
     } catch (ex) {
+        // TODO: Add logging
     }
 };

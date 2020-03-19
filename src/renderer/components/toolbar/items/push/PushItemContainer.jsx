@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import PushItem from './PushItem';
-import { REPOSITORY_SHAPE } from '../../../../constants/shapes';
+import { REPOSITORY_SHAPE, REPOSITORY_STATUS_SHAPE } from '../../../../constants/shapes';
 import pushRepository from '../../../../api/repository/push';
 
 const PushItemContainer = ({ repository, repositoryStatus }) => {
@@ -19,6 +19,11 @@ const PushItemContainer = ({ repository, repositoryStatus }) => {
 
 PushItemContainer.propTypes = {
     repository: PropTypes.shape(REPOSITORY_SHAPE).isRequired,
+    repositoryStatus: PropTypes.shape(REPOSITORY_STATUS_SHAPE),
+};
+
+PushItemContainer.defaultProps = {
+    repositoryStatus: null,
 };
 
 export default PushItemContainer;

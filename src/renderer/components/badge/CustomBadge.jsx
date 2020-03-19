@@ -14,6 +14,12 @@ const CustomBadge = ({ badgeContent, badgeColor, children }) => {
 };
 
 CustomBadge.propTypes = {
+    badgeContent: PropTypes.number.isRequired,
+    badgeColor: PropTypes.string.isRequired,
+    children: PropTypes.oneOfType([
+        PropTypes.node,
+        PropTypes.arrayOf(PropTypes.node),
+    ]).isRequired,
 };
 
 export default CustomBadge;

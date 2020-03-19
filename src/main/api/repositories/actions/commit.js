@@ -14,7 +14,8 @@ export default async function commit(ctx) {
         return;
     }
 
-    const commitResponse = await repository.commit(ctx.request.body.message, ctx.request.body.description);
+    const { message, description } = ctx.request.body;
+    const commitResponse = await repository.commit(message, description);
 
     if (!commitResponse.summary.changes) {
         ctx.status = 204;

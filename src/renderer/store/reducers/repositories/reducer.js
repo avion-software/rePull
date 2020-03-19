@@ -9,6 +9,7 @@ const repositories = (baseState = initialState, action) => produce(baseState, (d
     switch (action.type) {
         case SET_REPOSITORIES:
             draftState.values = action.payload;
+            break;
         default:
             break;
     }

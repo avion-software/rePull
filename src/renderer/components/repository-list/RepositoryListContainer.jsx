@@ -31,7 +31,12 @@ const RepositoryListContainer = ({ repositories, setActiveRepository }) => {
 };
 
 RepositoryListContainer.propTypes = {
+    setActiveRepository: PropTypes.func.isRequired,
     repositories: PropTypes.arrayOf(PropTypes.shape(REPOSITORY_SHAPE)),
+};
+
+RepositoryListContainer.defaultProps = {
+    repositories: [],
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(RepositoryListContainer);

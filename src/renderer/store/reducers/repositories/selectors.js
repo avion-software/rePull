@@ -13,4 +13,6 @@ export const getRepositoryMap = createSelector(
         return retVal;
     },
 );
-export const getRepository = (state, repositoryId) => (getRepositoryMap(state)[repositoryId] || null);
+export const getRepository = (state, repositoryId) => (
+    getRepositoryMap(state)[repositoryId] || null
+);

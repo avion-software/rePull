@@ -9,6 +9,7 @@ const repositoryStatus = (baseState = initialState, action) => produce(baseState
     switch (action.type) {
         case SET_REPOSITORY_STATUS:
             draftState.values[action.payload.id] = action.payload.value;
+            break;
         default:
             break;
     }
