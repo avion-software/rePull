@@ -11,6 +11,10 @@ const useToolbarCenterItemStyles = makeStyles((theme) => ({
 
         backgroundColor: 'rgba(0, 0, 0, 0.2)',
     },
+    rootClickable: {
+        cursor: 'pointer',
+        userSelect: 'none',
+    },
     name: {
         fontSize: 24,
         color: theme.palette.primary.main,

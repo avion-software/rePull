@@ -11,7 +11,7 @@ import PullItemContainer from './items/pull/PullItemContainer';
 import PushItemContainer from './items/push/PushItemContainer';
 import { REPOSITORY_SHAPE, REPOSITORY_STATUS_SHAPE } from '../../constants/shapes';
 
-const Toolbar = ({ activeRepository, activeRepositoryStatus }) => {
+const Toolbar = ({ activeRepository, activeRepositoryStatus, onCenterClick }) => {
     const classes = useToolbarStyles();
 
     return (
@@ -32,6 +32,7 @@ const Toolbar = ({ activeRepository, activeRepositoryStatus }) => {
                 )}
             </div>
             <ToolbarCenterItem
+                onClick={onCenterClick}
                 activeRepository={activeRepository}
                 activeRepositoryStatus={activeRepositoryStatus}
             />
@@ -48,11 +49,13 @@ const Toolbar = ({ activeRepository, activeRepositoryStatus }) => {
 Toolbar.propTypes = {
     activeRepository: PropTypes.shape(REPOSITORY_SHAPE),
     activeRepositoryStatus: PropTypes.shape(REPOSITORY_STATUS_SHAPE),
+    onCenterClick: PropTypes.func,
 };
 
 Toolbar.defaultProps = {
     activeRepository: null,
     activeRepositoryStatus: null,
+    onCenterClick: null,
 };
 
 export default Toolbar;

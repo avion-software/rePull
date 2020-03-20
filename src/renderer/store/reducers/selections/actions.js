@@ -7,6 +7,12 @@ const setActiveRepositoryAction = (repositoryId) => ({
     payload: repositoryId,
 });
 
+export const SET_SHOW_OVERLAY = 'SET_SHOW_OVERLAY';
+export const setShowActionOverlay = (showOverlay) => ({
+    type: SET_SHOW_OVERLAY,
+    payload: showOverlay,
+});
+
 export const setActiveRepository = (repository) => (dispatch) => {
     dispatch(setActiveRepositoryAction(repository.id));
     window.document.title = `${WINDOW_TITLE_PREFIX}${repository.name}`;
