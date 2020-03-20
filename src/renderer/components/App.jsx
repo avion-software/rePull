@@ -2,6 +2,7 @@ import React from 'react';
 import ToolbarContainer from './toolbar/ToolbarContainer';
 import RepositoryListContainer from './repository-list/RepositoryListContainer';
 import useAppStyles from './AppStyles';
+import ActionOverlayContainer from './action-overlay/ActionOverlayContainer';
 
 const App = () => {
     const classes = useAppStyles();
@@ -14,6 +15,7 @@ const App = () => {
             <div className={classes.main}>
                 <RepositoryListContainer />
             </div>
+            <ActionOverlayContainer />
         </div>
     );
 };
