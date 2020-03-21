@@ -14,6 +14,7 @@ const theme = createMuiTheme({
             paper: '#424242',
             default: '#303030',
             toolbar: '#202020',
+            sidebar: '#262626',
         },
         badge: {
             pull: green[500],
