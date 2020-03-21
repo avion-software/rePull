@@ -11,10 +11,16 @@ const useAppStyles = makeStyles(() => ({
         flexGrow: 0,
         flexShrink: 0,
     },
-    main: {
-        overflow: 'auto',
+    mainWrapper: {
+        display: 'flex',
+        height: '100%',
+        minHeight: 0,
+        flexDirection: 'row',
         flexGrow: 1,
         flexShrink: 1,
+    },
+    main: {
+        overflow: 'auto',
     },
 }));
 
