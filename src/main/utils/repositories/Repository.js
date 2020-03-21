@@ -1,6 +1,8 @@
 import path from 'path';
 import crypto from 'crypto';
 import SimpleGit from 'simple-git/promise';
+import parseBranchPaths from './branches/parseBranchParts';
+import groupBranchesByRemotes from './branches/groupBranchesByRemotes';
 
 export default class Repository {
     #id;
@@ -45,6 +47,27 @@ export default class Repository {
 
     async push(remote, branch) {
         return this.#simpleGit.push(remote, branch);
+    }
+
+    #branchLocal = async () => new Promise((resolve, reject) => {
+        this.#simpleGit.branchLocal((error, branches) => {
+            if (error) {
+                reject(error);
+                return;
+            }
+
+            resolve(branches);
+        });
+    });
+
+    async branches() {
+        const localBranches = await this.#branchLocal();
+        const remoteBranches = await this.#simpleGit.branch(['--remotes']);
+
+        return {
+            local: parseBranchPaths(localBranches.branches),
+            remotes: groupBranchesByRemotes(parseBranchPaths(remoteBranches.branches)),
+        };
     }
 
     async commit(message, description) {
