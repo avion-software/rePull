@@ -5,7 +5,7 @@ const useSidebarStyles = makeStyles((theme) => ({
         width: 200,
         height: '100%',
         backgroundColor: theme.palette.background.sidebar,
-        padding: 5,
+        paddingTop: '5px',
     },
 }));
 

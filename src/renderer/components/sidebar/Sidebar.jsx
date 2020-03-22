@@ -3,16 +3,24 @@ import PropTypes from 'prop-types';
 import useSidebarStyles from './SidebarStyles';
 import { REPOSITORY_BRANCH_SHAPE } from '../../constants/shapes';
 import BranchTree from './branch-tree/BranchTree';
+import RemoteBranches from './remote-branches/RemoteBranches';
+import SidebarSection from './sidebar-section/SidebarSection';
 
 const Sidebar = ({ branches }) => {
     const classes = useSidebarStyles();
 
     return (
         <div className={classes.root}>
-            Hello Sidebar
             {branches?.local && (
-                <BranchTree
-                    branches={branches.local}
+                <SidebarSection name="Local">
+                    <BranchTree
+                        branches={branches.local}
+                    />
+                </SidebarSection>
+            )}
+            {branches?.remotes && (
+                <RemoteBranches
+                    remoteBranches={branches.remotes}
                 />
             )}
         </div>
