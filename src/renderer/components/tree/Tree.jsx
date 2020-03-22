@@ -11,17 +11,15 @@ const Tree = ({ value, ItemComponent }) => {
             {value.map((v) => {
                 if (v.children) {
                     return (
-                        <>
+                        <div key={v.id}>
                             <ItemComponent
-                                key={v.id}
                                 value={v}
                             />
                             <Tree
-                                key={`tree_${v.id}`}
                                 value={v.children}
                                 ItemComponent={ItemComponent}
                             />
-                        </>
+                        </div>
                     );
                 }
 
