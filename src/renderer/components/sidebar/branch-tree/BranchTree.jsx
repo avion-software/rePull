@@ -33,12 +33,16 @@ const BranchTree = ({ branches }) => {
         return mapTree({ children: retVal }, [], (path, entry) => {
             if (!entry.children) {
                 return {
+                    id: entry.name,
                     ...entry,
                     name: entry.path[entry.path.length - 1],
                 };
             }
 
-            const rVal = { ...entry };
+            const rVal = {
+                id: entry.name,
+                ...entry,
+            };
 
             rVal.children = Object.values(rVal.children);
 
