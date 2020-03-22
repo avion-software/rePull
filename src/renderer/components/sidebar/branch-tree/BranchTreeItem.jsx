@@ -14,7 +14,11 @@ BranchTreeItem.propTypes = {
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.node),
         PropTypes.node,
-    ]).isRequired,
+    ]),
+};
+
+BranchTreeItem.defaultProps = {
+    children: null,
 };
 
 export default BranchTreeItem;
