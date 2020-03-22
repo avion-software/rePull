@@ -14,7 +14,9 @@ const App = () => {
                 <ToolbarContainer />
             </div>
             <div className={classes.mainWrapper}>
-                <SidebarContainer />
+                <div className={classes.sidebar}>
+                    <SidebarContainer />
+                </div>
                 <div className={classes.main}>
                     <RepositoryListContainer />
                 </div>

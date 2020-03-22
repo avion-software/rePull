@@ -19,8 +19,13 @@ const useAppStyles = makeStyles(() => ({
         flexGrow: 1,
         flexShrink: 1,
     },
+    sidebar: {
+        flexGrow: 0,
+        flexShrink: 0,
+    },
     main: {
         overflow: 'auto',
+        flexGrow: 1,
     },
 }));
 
