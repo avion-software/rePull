@@ -14,11 +14,12 @@ const Tree = ({ value, ItemComponent }) => {
                         <div key={v.id}>
                             <ItemComponent
                                 value={v}
-                            />
-                            <Tree
-                                value={v.children}
-                                ItemComponent={ItemComponent}
-                            />
+                            >
+                                <Tree
+                                    value={v.children}
+                                    ItemComponent={ItemComponent}
+                                />
+                            </ItemComponent>
                         </div>
                     );
                 }
