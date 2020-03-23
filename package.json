@@ -61,6 +61,7 @@
     "immer": "6.0.1",
     "mousetrap": "1.6.5",
     "react-redux": "7.2.0",
+    "react-transition-group": "4.3.0",
     "redux": "4.0.5",
     "redux-thunk": "2.3.0",
     "reselect": "4.0.0",
