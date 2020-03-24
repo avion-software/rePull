@@ -1,13 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { REPOSITORY_BRANCH_SHAPE } from '../../../constants/shapes';
+import ConnectedExpansionPanel from '../../expansion-panel/ConnectedExpansionPanel';
+import useBranchTreeItemStyles from './BranchTreeItemStyles';
 
-const BranchTreeItem = ({ value, children }) => (
-    <div>
-        {value.name}
-        {children}
-    </div>
-);
+const BranchTreeItem = ({ value, children }) => {
+    const classes = useBranchTreeItemStyles();
+
+    return (
+        <ConnectedExpansionPanel title={value.name} hideIcon={!children} open>
+            <div className={classes.children}>
+                {children}
+            </div>
+        </ConnectedExpansionPanel>
+    );
+};
 
 BranchTreeItem.propTypes = {
     value: PropTypes.shape(REPOSITORY_BRANCH_SHAPE).isRequired,
