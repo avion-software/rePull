@@ -31,12 +31,17 @@ const ExpansionPanel = ({
         exitDone: animationClasses.exitDone,
     }), [animationClasses]);
 
+    const handleOnClick = (open ? onClose : onOpen);
+
     return (
         <div>
             <div
                 className={classes.head}
             >
-                <div onClick={open ? onClose : onOpen} className={classes.iconWrapper}>
+                <div
+                    onClick={handleOnClick}
+                    className={classes.iconWrapper}
+                >
                     {!hideIcon && (
                         <FontAwesomeIcon
                             className={clsx(classes.icon, {
@@ -46,7 +51,12 @@ const ExpansionPanel = ({
                         />
                     )}
                 </div>
-                <div className={classes.title}>{title}</div>
+                <div
+                    onClick={handleOnClick}
+                    className={classes.title}
+                >
+                    {title}
+                </div>
             </div>
             <div>
                 <CSSTransition
