@@ -4,6 +4,7 @@ const useExpansionPanelStyles = makeStyles(() => ({
     head: {
         display: 'flex',
         alignItems: 'center',
+        userSelect: 'none',
     },
     iconWrapper: {
         width: 14,
