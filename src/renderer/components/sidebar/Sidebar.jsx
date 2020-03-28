@@ -5,12 +5,13 @@ import { REPOSITORY_BRANCH_SHAPE } from '../../constants/shapes';
 import BranchTree from './branch-tree/BranchTree';
 import RemoteBranches from './remote-branches/RemoteBranches';
 import SidebarSection from './sidebar-section/SidebarSection';
+import ScrollArea from '../scroll-area/ScrollArea';
 
 const Sidebar = ({ branches }) => {
     const classes = useSidebarStyles();
 
     return (
-        <div className={classes.root}>
+        <ScrollArea className={classes.root}>
             {branches?.local && (
                 <SidebarSection name="Local">
                     <BranchTree
@@ -23,7 +24,7 @@ const Sidebar = ({ branches }) => {
                     remoteBranches={branches.remotes}
                 />
             )}
-        </div>
+        </ScrollArea>
     );
 };
 
