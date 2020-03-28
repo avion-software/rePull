@@ -21,6 +21,10 @@ const theme = createMuiTheme({
             pull: green[500],
             push: red[500],
         },
+        scrollbar: {
+            thumb: 'rgba(13, 71, 161, 0.5)',
+            thumbHover: 'rgba(13, 71, 161, 0.9)',
+        },
     },
 });
 
