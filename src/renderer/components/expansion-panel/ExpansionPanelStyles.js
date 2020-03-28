@@ -18,6 +18,8 @@ const useExpansionPanelStyles = makeStyles(() => ({
         transform: 'rotate(90deg)',
     },
     title: {
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
         paddingLeft: 5,
         flexGrow: 1,
     },
