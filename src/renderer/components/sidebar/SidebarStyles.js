@@ -6,6 +6,7 @@ const useSidebarStyles = makeStyles((theme) => ({
         height: '100%',
         backgroundColor: theme.palette.background.sidebar,
         paddingTop: '5px',
+        fontSize: 13,
     },
 }));
 
