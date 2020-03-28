@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Sidebar from './Sidebar';
 import { connect } from 'react-redux';
+
+import Sidebar from './Sidebar';
 import { getRepositoryBranches } from '../../store/reducers/repository-branches/selectors';
 import { REPOSITORY_BRANCH_SHAPE } from '../../constants/shapes';
 import { getActiveRepository } from '../../store/reducers/selections/selectors';
