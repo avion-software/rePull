@@ -9,6 +9,7 @@ const useExpansionPanelStyles = makeStyles(() => ({
     iconWrapper: {
         width: 14,
         justifyContent: 'center',
+        flexShrink: 0,
     },
     icon: {
         transition: 'transform .3s',
@@ -18,6 +19,7 @@ const useExpansionPanelStyles = makeStyles(() => ({
     },
     title: {
         paddingLeft: 5,
+        flexGrow: 1,
     },
 }));
 
