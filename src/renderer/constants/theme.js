@@ -25,6 +25,9 @@ const theme = createMuiTheme({
             thumb: 'rgba(13, 71, 161, 0.5)',
             thumbHover: 'rgba(13, 71, 161, 0.9)',
         },
+        sidebar: {
+            currentBranch: '#b3d0ff',
+        },
     },
 });
 
