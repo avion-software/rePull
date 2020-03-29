@@ -13,13 +13,12 @@ const RemoteBranches = ({ remoteBranches }) => {
     return (
         <SidebarSection name="Remotes">
             {remotes.map((remote) => (
-                <>
+                <div key={remote.name}>
                     {remote.name}
                     <BranchTree
-                        key={remote.name}
                         branches={remote.children}
                     />
-                </>
+                </div>
             ))}
         </SidebarSection>
     );
