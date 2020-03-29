@@ -28,6 +28,9 @@ const theme = createMuiTheme({
         sidebar: {
             currentBranch: '#b3d0ff',
         },
+        contextMenu: {
+            itemHover: 'rgba(13, 71, 161, 0.2)',
+        },
     },
 });
 
