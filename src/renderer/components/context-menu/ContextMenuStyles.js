@@ -9,6 +9,7 @@ const useContextMenuStyles = makeStyles((theme) => ({
         pointerEvents: 'all',
         border: `1px solid ${theme.palette.primary[theme.palette.type]}`,
         boxShadow: '0 0 10px #1A1A1A',
+        userSelect: 'none',
     },
 }));
 
