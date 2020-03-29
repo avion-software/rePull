@@ -4,18 +4,24 @@ import clsx from 'clsx';
 
 import useBranchItemStyles from './BranchItemStyles';
 import { REPOSITORY_BRANCH_SHAPE } from '../../../../constants/shapes';
+import useContextMenu from '../../../context-menu/useContextMenu';
 
 const BranchItem = ({ value }) => {
     const classes = useBranchItemStyles();
+    const [showContextMenu, ContextComponent] = useContextMenu();
 
     return (
-        <div
-            className={clsx(classes.root, {
-                [classes.active]: value.current,
-            })}
-        >
-            {value.name}
-        </div>
+        <>
+            <ContextComponent />
+            <div
+                className={clsx(classes.root, {
+                    [classes.active]: value.current,
+                })}
+                onContextMenu={showContextMenu}
+            >
+                {value.name}
+            </div>
+        </>
     );
 };
 
