@@ -25,7 +25,7 @@ const useContextMenu = () => {
     }, [setContextMenuSettings]);
 
     useEffect(() => {
-        setComponent(() => () => (
+        setComponent(() => ({ children }) => (
             <Backdrop
                 open={!!contextMenuSettings}
                 invisible
@@ -36,7 +36,7 @@ const useContextMenu = () => {
                     top={contextMenuSettings?.y}
                     left={contextMenuSettings?.x}
                 >
-                    Test
+                    {children}
                 </ContextMenu>
             </Backdrop>
         ));
