@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import useContextMenuStyles from './ContextMenuStyles';
 
@@ -10,8 +10,14 @@ const preventEvent = (e) => {
 const ContextMenu = ({ children, left, top }) => {
     const classes = useContextMenuStyles();
 
+    const style = useMemo(() => ({
+        top,
+        left,
+    }), [left, top]);
+
     return (
         <div
+            style={style}
             className={classes.root}
             onClickCapture={preventEvent}
         >

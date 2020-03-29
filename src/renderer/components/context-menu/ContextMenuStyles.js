@@ -2,6 +2,7 @@ import { makeStyles } from '@material-ui/core';
 
 const useContextMenuStyles = makeStyles((theme) => ({
     root: {
+        position: 'absolute',
         padding: 5,
         backgroundColor: '#1A1A1A',
         minWidth: 200,

@@ -1,6 +1,6 @@
 import React, {
     useCallback,
-    useEffect, useMemo,
+    useEffect,
     useState,
 } from 'react';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -25,28 +25,21 @@ const useContextMenu = () => {
     }, [setContextMenuSettings]);
 
     useEffect(() => {
-        setComponent(() => () => {
-            const style = useMemo(() => ({
-                position: 'fixed',
-                top: contextMenuSettings?.y,
-                left: contextMenuSettings?.x,
-            }), [contextMenuSettings]);
-
-            return (
-                <Backdrop
-                    open={!!contextMenuSettings}
-                    invisible
-                    onClick={handleHideContextMenu}
-                    style={BACKDROP_STYLE}
+        setComponent(() => () => (
+            <Backdrop
+                open={!!contextMenuSettings}
+                invisible
+                onClick={handleHideContextMenu}
+                style={BACKDROP_STYLE}
+            >
+                <ContextMenu
+                    top={contextMenuSettings?.y}
+                    left={contextMenuSettings?.x}
                 >
-                    <div style={style}>
-                        <ContextMenu>
-                            Test
-                        </ContextMenu>
-                    </div>
-                </Backdrop>
-            );
-        });
+                    Test
+                </ContextMenu>
+            </Backdrop>
+        ));
     }, [setComponent, contextMenuSettings]);
 
     return [handleShowContextMenu, component];
