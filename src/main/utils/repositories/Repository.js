@@ -78,14 +78,15 @@ export default class Repository {
     async branches() {
         const remotes = await this.remotes();
         const localBranches = await this.#branchManager.getBranches();
-        console.log(localBranches);
 
-        // const localBranches = await this.#branchLocal();
-        const remoteBranches = await this.#simpleGit.branch(['--remotes']);
+        const remoteBranches = {};
+        await Promise.all(remotes.map(async (remote) => {
+            remoteBranches[remote.name] = await this.#branchManager.getBranches(remote.name);
+        }));
 
         return {
             local: localBranches,
-            remotes: groupBranchesByRemotes(parseBranchPaths(remoteBranches.branches)),
+            remotes: remoteBranches,
         };
     }
 

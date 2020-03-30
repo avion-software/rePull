@@ -34,8 +34,54 @@ export default class BranchManager {
         });
     };
 
-    #loadRemoteBranches = async () => {
+    #requestRemoteBranches = async (remote) => {
+        const remoteBranchesRaw = await this.#repository.getSimpleGit().listRemote(['--heads', remote]);
+        const retVal = [];
 
+        await Promise.all(remoteBranchesRaw.split('\n').map(async (rawLine) => {
+            const line = rawLine.split('\t');
+
+            if ((rawLine.indexOf('\t') === -1) || !line[1].startsWith('refs/heads')) {
+                return;
+            }
+
+            const name = line[1].substring(11);
+
+            const shortHash = await this.#repository.getSimpleGit().revparse(['--short', line[0]]);
+
+            const branch = {
+                name,
+                remote,
+                path: name.split('/'),
+                current: false,
+                commit: shortHash,
+            };
+
+            retVal.push(branch);
+        }));
+        return retVal;
+    };
+
+    #loadRemoteBranches = async () => {
+        const remotes = await this.#repository.remotes();
+
+        await Promise.all(remotes.map(async (remote) => {
+            try {
+                if (!this.#branchByRemote[remote.name]) {
+                    this.#branchByRemote[remote.name] = {};
+                }
+
+                const remoteBranches = await this.#requestRemoteBranches(remote.name);
+                remoteBranches.forEach((remoteBranchConfig) => {
+                    const branch = new Branch(remoteBranchConfig, remote.name);
+
+                    this.#branchById[branch.getId()] = branch;
+                    this.#branchByRemote[remote.name][branch.getId()] = branch;
+                });
+            } catch (ex) {
+                console.error(ex);
+            }
+        }));
     };
 
     async getBranches(remote = false) {
