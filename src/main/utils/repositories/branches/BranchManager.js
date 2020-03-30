@@ -93,4 +93,16 @@ export default class BranchManager {
         await this.#loadRemoteBranches();
         return Object.values(this.#branchByRemote[remote]);
     }
+
+    async getBranchesOfAllRemotes() {
+        await this.#loadRemoteBranches();
+
+        const retVal = {};
+
+        Object.entries(this.#branchByRemote).forEach(([remote, branchObject]) => {
+            retVal[remote] = Object.values(branchObject);
+        });
+
+        return retVal;
+    }
 }

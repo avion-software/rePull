@@ -71,18 +71,9 @@ export default class Repository {
         });
     }
 
-    #branchLocal = async () => new Promise((resolve, reject) => {
-
-    });
-
     async branches() {
-        const remotes = await this.remotes();
         const localBranches = await this.#branchManager.getBranches();
-
-        const remoteBranches = {};
-        await Promise.all(remotes.map(async (remote) => {
-            remoteBranches[remote.name] = await this.#branchManager.getBranches(remote.name);
-        }));
+        const remoteBranches = await this.#branchManager.getBranchesOfAllRemotes();
 
         return {
             local: localBranches,
