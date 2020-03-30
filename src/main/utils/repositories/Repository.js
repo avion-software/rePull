@@ -1,8 +1,6 @@
 import path from 'path';
 import crypto from 'crypto';
 import SimpleGit from 'simple-git/promise';
-import parseBranchPaths from './branches/parseBranchParts';
-import groupBranchesByRemotes from './branches/groupBranchesByRemotes';
 import BranchManager from './branches/BranchManager';
 
 export default class Repository {
