@@ -3,6 +3,7 @@ import crypto from 'crypto';
 import SimpleGit from 'simple-git/promise';
 import parseBranchPaths from './branches/parseBranchParts';
 import groupBranchesByRemotes from './branches/groupBranchesByRemotes';
+import BranchManager from './branches/BranchManager';
 
 export default class Repository {
     #id;
@@ -11,10 +12,18 @@ export default class Repository {
 
     #simpleGit;
 
+    #branchManager;
+
     constructor(pPath) {
         this.#id = crypto.createHash('md5').update(pPath).digest('hex');
         this.#path = pPath;
         this.#simpleGit = SimpleGit(pPath);
+
+        this.#branchManager = new BranchManager(this);
+    }
+
+    getSimpleGit() {
+        return this.#simpleGit;
     }
 
     async isGitRepo() {
@@ -49,23 +58,33 @@ export default class Repository {
         return this.#simpleGit.push(remote, branch);
     }
 
-    #branchLocal = async () => new Promise((resolve, reject) => {
-        this.#simpleGit.branchLocal((error, branches) => {
-            if (error) {
-                reject(error);
-                return;
-            }
+    async remotes() {
+        return new Promise((resolve, reject) => {
+            this.#simpleGit.getRemotes((err, data) => {
+                if (err) {
+                    reject(err);
+                    return;
+                }
 
-            resolve(branches);
+                resolve(data);
+            });
         });
+    }
+
+    #branchLocal = async () => new Promise((resolve, reject) => {
+
     });
 
     async branches() {
-        const localBranches = await this.#branchLocal();
+        const remotes = await this.remotes();
+        const localBranches = await this.#branchManager.getBranches();
+        console.log(localBranches);
+
+        // const localBranches = await this.#branchLocal();
         const remoteBranches = await this.#simpleGit.branch(['--remotes']);
 
         return {
-            local: parseBranchPaths(localBranches.branches),
+            local: localBranches,
             remotes: groupBranchesByRemotes(parseBranchPaths(remoteBranches.branches)),
         };
     }
