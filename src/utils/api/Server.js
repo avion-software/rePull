@@ -35,7 +35,7 @@ export default class Server {
             await this.#router.routes()(ctx, next);
             event.reply('response', {
                 id: data.id,
-                body: ctx.body,
+                body: JSON.stringify(ctx.body),
                 headers: responseHeaders,
                 statusCode: ctx.status,
             });

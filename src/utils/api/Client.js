@@ -14,7 +14,7 @@ export default class Client {
         if (this.#promiseCallbacks[data.id]?.resolve) {
             this.#promiseCallbacks[data.id].resolve({
                 statusCode: data.statusCode,
-                json: async () => data.body,
+                json: async () => JSON.parse(data.body),
                 headers: data.headers,
             });
         }
