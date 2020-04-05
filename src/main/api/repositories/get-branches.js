@@ -1,4 +1,5 @@
 import RepositoryManager from '../../utils/repositories/RepositoryManager';
+import parseBoolean from '../../utils/convert/parseBoolean';
 
 export default async function getRepositoryBranches(ctx) {
     const repositoryManager = RepositoryManager.Instance();
@@ -9,7 +10,9 @@ export default async function getRepositoryBranches(ctx) {
         return;
     }
 
-    const branches = await repository.branches();
+    const branches = parseBoolean(ctx.query?.remotes)
+        ? await repository.remoteBranches()
+        : await repository.localBranches();
 
     ctx.body = branches;
     ctx.status = 200;
