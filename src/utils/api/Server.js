@@ -21,6 +21,7 @@ export default class Server {
             path: parsedUrl.pathname,
             method: data.method,
             set: (key, value) => { responseHeaders[key] = value; },
+            query: parsedUrl.query,
             request: {
                 headers: data.headers,
                 method: data.method,
