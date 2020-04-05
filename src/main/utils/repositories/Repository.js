@@ -69,9 +69,17 @@ export default class Repository {
         });
     }
 
+    async localBranches() {
+        return this.#branchManager.getBranches();
+    }
+
+    async remoteBranches() {
+        return this.#branchManager.getBranchesOfAllRemotes();
+    }
+
     async branches() {
-        const localBranches = await this.#branchManager.getBranches();
-        const remoteBranches = await this.#branchManager.getBranchesOfAllRemotes();
+        const localBranches = await this.localBranches();
+        const remoteBranches = await this.remoteBranches();
 
         return {
             local: localBranches,
