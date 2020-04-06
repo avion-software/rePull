@@ -10,7 +10,8 @@ const repositoryBranches = (baseState = initialState, action) => produce(
     (draftState) => {
         switch (action.type) {
             case SET_REPOSITORY_BRANCHES:
-                draftState.values[action.payload.id] = action.payload.value;
+                draftState.values[action.payload.id] = draftState.values[action.payload.id] || {};
+                draftState.values[action.payload.id][action.payload.local ? 'local' : 'remotes'] = action.payload.value;
                 break;
             default:
                 break;
