@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import ContextMenuList from '../../../../context-menu/list/ContextMenuList';
 import ContextMenuListItem from '../../../../context-menu/list/ContextMenuListItem';
 
-const BranchItemContext = () => (
+const BranchItemContext = ({ onCheckout }) => (
     <ContextMenuList>
-        <ContextMenuListItem>
-            Test1
+        <ContextMenuListItem
+            onClick={onCheckout}
+        >
+            Checkout
         </ContextMenuListItem>
         <ContextMenuListItem>
             Test2
@@ -18,7 +20,7 @@ const BranchItemContext = () => (
 );
 
 BranchItemContext.propTypes = {
-
+    onCheckout: PropTypes.func.isRequired,
 };
 
 export default BranchItemContext;
