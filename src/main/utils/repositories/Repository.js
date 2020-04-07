@@ -69,6 +69,10 @@ export default class Repository {
         });
     }
 
+    async getBranchManager() {
+        return this.#branchManager;
+    }
+
     async localBranches() {
         return this.#branchManager.getBranches();
     }
