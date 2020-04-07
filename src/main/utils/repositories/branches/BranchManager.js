@@ -105,4 +105,8 @@ export default class BranchManager {
 
         return retVal;
     }
+
+    getById(branchId) {
+        return this.#branchById[branchId] || null;
+    }
 }
