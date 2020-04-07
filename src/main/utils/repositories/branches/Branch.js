@@ -1,4 +1,5 @@
 import crypto from 'crypto';
+import parseCheckoutErrors from '../../exceptions/git/parseCheckoutErrors';
 
 export default class Branch {
     #config;
@@ -20,6 +21,20 @@ export default class Branch {
 
     getId() {
         return this.#id;
+    }
+
+    async checkout() {
+        try {
+            return await this.#repository.getSimpleGit().checkout(this.#config.name);
+        } catch (ex) {
+            const parsedException = parseCheckoutErrors(ex);
+
+            if (parsedException) {
+                throw parsedException;
+            }
+
+            throw ex;
+        }
     }
 
     toJSON() {
