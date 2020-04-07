@@ -7,11 +7,14 @@ export default class Branch {
 
     #id;
 
-    constructor(config, remote = false) {
+    #repository;
+
+    constructor(repository, config, remote = false) {
         const stringId = `${(remote === false) ? 'local' : remote}~${config.path.join('/')}`;
         this.#id = crypto.createHash('md5').update(stringId).digest('hex');
         this.#config = config;
         this.#remote = remote;
+        this.#repository = repository;
     }
 
 

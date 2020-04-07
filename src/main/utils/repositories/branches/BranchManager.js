@@ -28,7 +28,7 @@ export default class BranchManager {
     #loadLocalBranches = async () => {
         const localBranches = await this.#requestLocalBranches();
         parseBranchPaths(localBranches.branches).forEach((branchConfig) => {
-            const branch = new Branch(branchConfig);
+            const branch = new Branch(this.#repository, branchConfig);
             this.#branchById[branch.getId()] = branch;
             this.#localBranches[branch.getId()] = branch;
         });
@@ -73,7 +73,7 @@ export default class BranchManager {
 
                 const remoteBranches = await this.#requestRemoteBranches(remote.name);
                 remoteBranches.forEach((remoteBranchConfig) => {
-                    const branch = new Branch(remoteBranchConfig, remote.name);
+                    const branch = new Branch(this.#repository, remoteBranchConfig, remote.name);
 
                     this.#branchById[branch.getId()] = branch;
                     this.#branchByRemote[remote.name][branch.getId()] = branch;
