@@ -42,7 +42,7 @@ const useContextMenu = () => {
         ));
     }, [setComponent, contextMenuSettings]);
 
-    return [handleShowContextMenu, component];
+    return [handleShowContextMenu, handleHideContextMenu, component];
 };
 
 export default useContextMenu;

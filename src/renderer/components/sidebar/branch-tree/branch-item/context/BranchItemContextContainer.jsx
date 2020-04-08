@@ -10,9 +10,10 @@ const mapDispatchToProps = ({
     checkoutBranch: checkoutBranchAction,
 });
 
-const BranchItemContextContainer = ({ value, checkoutBranch }) => {
+const BranchItemContextContainer = ({ value, checkoutBranch, onHideContextMenu }) => {
     const handleCheckout = useCallback(async () => {
         if (value?.repository) {
+            onHideContextMenu();
             const response = await checkoutBranch(value.repository, value);
             if (response?.status === 409) {
                 sendNotification(
@@ -21,7 +22,7 @@ const BranchItemContextContainer = ({ value, checkoutBranch }) => {
                 );
             }
         }
-    }, [value, checkoutBranch]);
+    }, [value, onHideContextMenu, checkoutBranch]);
 
     return (
         <BranchItemContext
@@ -32,6 +33,7 @@ const BranchItemContextContainer = ({ value, checkoutBranch }) => {
 
 BranchItemContextContainer.propTypes = {
     checkoutBranch: PropTypes.func.isRequired,
+    onHideContextMenu: PropTypes.func.isRequired,
     value: PropTypes.shape(REPOSITORY_BRANCH_SHAPE).isRequired,
 };
 

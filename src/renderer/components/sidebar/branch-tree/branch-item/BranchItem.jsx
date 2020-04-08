@@ -9,12 +9,19 @@ import BranchItemContextContainer from './context/BranchItemContextContainer';
 
 const BranchItem = ({ value }) => {
     const classes = useBranchItemStyles();
-    const [showContextMenu, ContextComponent] = useContextMenu(BranchItemContextContainer);
+    const [
+        showContextMenu,
+        hideContextMenu,
+        ContextComponent,
+    ] = useContextMenu(BranchItemContextContainer);
 
     return (
         <>
             <ContextComponent>
-                <BranchItemContextContainer value={value} />
+                <BranchItemContextContainer
+                    value={value}
+                    onHideContextMenu={hideContextMenu}
+                />
             </ContextComponent>
             <div
                 className={clsx(classes.root, {
