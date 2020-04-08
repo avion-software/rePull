@@ -1,6 +1,6 @@
 import CheckoutConflictError from './CheckoutConflictError';
 
-export default async function parseCheckoutErrors(ex) {
+export default function parseCheckoutErrors(ex) {
     let exceptionType = 0;
     const paths = [];
     const lines = String(ex).split('\n');
@@ -16,12 +16,10 @@ export default async function parseCheckoutErrors(ex) {
             if (lines[i].startsWith('\t')) {
                 paths.push(lines[i].trim());
             } else {
-                throw new CheckoutConflictError(paths);
+                return new CheckoutConflictError(paths);
             }
         }
     }
 
-    console.error([ex]);
-
-    throw ex;
+    return ex;
 }
