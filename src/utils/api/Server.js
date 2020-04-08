@@ -40,7 +40,7 @@ export default class Server {
             await this.#router.routes()(ctx, next);
             event.reply('response', {
                 id: data.id,
-                body: JSON.stringify(ctx.body),
+                body: JSON.stringify(ctx.body === undefined ? null : ctx.body),
                 headers: responseHeaders,
                 statusCode: ctx.status,
             });
