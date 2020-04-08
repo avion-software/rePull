@@ -1,5 +1,6 @@
 import getRepositoryBranches from '../../../api/repository/branches';
 import checkout from '../../../api/branch/checkout';
+import { loadRepositoryStatus } from '../repository-status/actions';
 
 export const SET_REPOSITORY_BRANCHES = 'SET_REPOSITORY_BRANCHES';
 export const setRepositoryBranches = (repositoryId, repositoryBranches, local = true) => ({
@@ -50,6 +51,7 @@ export const checkoutBranch = (repository, branch) => async (dispatch) => {
     try {
         const response = await checkout(repository, branch);
         dispatch(loadRepositoryBranches(repository));
+        dispatch(loadRepositoryStatus(repository));
         return response;
     } catch (ex) {
         console.error(ex);
