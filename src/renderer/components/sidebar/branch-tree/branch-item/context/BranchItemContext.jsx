@@ -10,12 +10,6 @@ const BranchItemContext = ({ onCheckout }) => (
         >
             Checkout
         </ContextMenuListItem>
-        <ContextMenuListItem>
-            Test2
-        </ContextMenuListItem>
-        <ContextMenuListItem>
-            Test3
-        </ContextMenuListItem>
     </ContextMenuList>
 );
 
