@@ -1,11 +1,11 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { REPOSITORY_BRANCH_SHAPE } from '../../../constants/shapes';
+import { REPOSITORY_BRANCH_SHAPE, REPOSITORY_SHAPE } from '../../../constants/shapes';
 import mapTree from '../../../utils/tree/mapTree';
 import Tree from '../../tree/Tree';
 import BranchTreeItem from './BranchTreeItem';
 
-const BranchTree = ({ branches }) => {
+const BranchTree = ({ branches, repository }) => {
     const branchTree = useMemo(() => {
         const retVal = {};
 
@@ -36,6 +36,7 @@ const BranchTree = ({ branches }) => {
                     id: entry.name,
                     ...entry,
                     name: entry.path[entry.path.length - 1],
+                    repository,
                 };
             }
 
@@ -48,7 +49,7 @@ const BranchTree = ({ branches }) => {
 
             return rVal;
         }).children;
-    }, [branches]);
+    }, [branches, repository]);
 
     return (
         <Tree
@@ -60,6 +61,11 @@ const BranchTree = ({ branches }) => {
 
 BranchTree.propTypes = {
     branches: PropTypes.arrayOf(PropTypes.shape(REPOSITORY_BRANCH_SHAPE)).isRequired,
+    repository: PropTypes.shape(REPOSITORY_SHAPE),
+};
+
+BranchTree.defaultProps = {
+    repository: null,
 };
 
 export default BranchTree;
