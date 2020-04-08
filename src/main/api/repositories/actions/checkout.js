@@ -38,6 +38,7 @@ export default async function checkout(ctx) {
         }
 
         ctx.status = 500;
+        return;
     }
 
     ctx.status = 200;
