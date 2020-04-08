@@ -8,8 +8,11 @@ import store from './store';
 import theme from './constants/theme';
 import { loadRepositories } from './store/reducers/repositories/actions';
 import App from './components/App';
+import request from './utils/api/request';
 
 store.dispatch(loadRepositories());
+
+window.request = request;
 
 const Index = () => (
     <ThemeProvider theme={theme}>

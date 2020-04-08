@@ -1,3 +1,4 @@
+import url from 'url';
 import Router from '@koa/router';
 
 export default class Server {
@@ -14,15 +15,19 @@ export default class Server {
     async handleRequest(event, data) {
         const responseHeaders = {};
 
+        const parsedUrl = url.parse(data.path, true);
+
         const ctx = {
-            path: data.path,
+            path: parsedUrl.pathname,
             method: data.method,
             set: (key, value) => { responseHeaders[key] = value; },
+            query: parsedUrl.query,
             request: {
                 headers: data.headers,
                 method: data.method,
-                path: data.path,
+                path: parsedUrl.pathname,
                 body: data.body,
+                query: parsedUrl.query,
             },
             response: {
 
@@ -35,7 +40,7 @@ export default class Server {
             await this.#router.routes()(ctx, next);
             event.reply('response', {
                 id: data.id,
-                body: ctx.body,
+                body: JSON.stringify(ctx.body === undefined ? null : ctx.body),
                 headers: responseHeaders,
                 statusCode: ctx.status,
             });
