@@ -6,11 +6,13 @@ import commit from './actions/commit';
 import push from './actions/push';
 import getRepositoryBranches from './get-branches';
 import checkout from './actions/checkout';
+import getRepositoryChanges from './get-changes';
 
 export default function createRepositoryEndpoints(server) {
     server.get('/repositories', listRepositories);
     server.get('/repositories/:repositoryId/status', getRepositoryStatus);
     server.get('/repositories/:repositoryId/branches', getRepositoryBranches);
+    server.get('/repositories/:repositoryId/changes', getRepositoryChanges);
     server.post('/repositories/:repositoryId/fetch', fetch);
     server.post('/repositories/:repositoryId/pull', pull);
     server.post('/repositories/:repositoryId/commit', commit);
