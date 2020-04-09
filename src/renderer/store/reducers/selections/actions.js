@@ -1,6 +1,7 @@
 import { WINDOW_TITLE_PREFIX } from '../../../constants/app-constants';
 import { loadRepositoryStatus } from '../repository-status/actions';
 import { loadRepositoryBranches } from '../repository-branches/actions';
+import { loadRepositoryChanges } from '../repository-changes/actions';
 
 export const SET_ACTIVE_REPOSITORY = 'SET_ACTIVE_REPOSITORY';
 const setActiveRepositoryAction = (repositoryId) => ({
@@ -20,4 +21,5 @@ export const setActiveRepository = (repository) => (dispatch) => {
 
     dispatch(loadRepositoryStatus(repository));
     dispatch(loadRepositoryBranches(repository));
+    dispatch(loadRepositoryChanges(repository));
 };
