@@ -2,7 +2,7 @@ import { produce } from 'immer';
 import { SET_ACTIVE_REPOSITORY, SET_SHOW_OVERLAY } from './actions';
 
 const initialState = {
-    activeRepository: [],
+    activeRepository: null,
     showActionOverlay: false,
 };
 
