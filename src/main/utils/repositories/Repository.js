@@ -1,6 +1,8 @@
 import path from 'path';
 import crypto from 'crypto';
 import SimpleGit from 'simple-git/promise';
+import parsePatch from 'git-patch-parser';
+
 import BranchManager from './branches/BranchManager';
 
 export default class Repository {
@@ -97,6 +99,16 @@ export default class Repository {
         }
 
         return this.#simpleGit.commit(message);
+    }
+
+    async getChanges() {
+        const response = await this.#simpleGit.diff(['--patch', '--full-index']);
+        const stagedResponse = await this.#simpleGit.diff(['--patch', '--full-index', '--staged']);
+
+        return {
+            staged: parsePatch(stagedResponse)?.files,
+            unstaged: parsePatch(response)?.files,
+        };
     }
 
     toJSON() {
