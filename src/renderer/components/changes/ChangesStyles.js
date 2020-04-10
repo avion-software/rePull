@@ -10,7 +10,7 @@ const useChangesStyles = makeStyles((theme) => ({
         flexGrow: 1,
     },
     bottomBar: {
-        backgroundColor: console.log(theme) || theme.palette.background.bottomBar,
+        backgroundColor: theme.palette.background.bottomBar,
     },
 }));
 
