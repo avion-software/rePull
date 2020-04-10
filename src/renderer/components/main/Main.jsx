@@ -2,10 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import RepositoryListContainer from '../repository-list/RepositoryListContainer';
 import { REPOSITORY_SHAPE } from '../../constants/shapes';
+import ChangesContainer from '../changes/ChangesContainer';
 
 const Main = ({ repository }) => {
     if (repository) {
-        return null;
+        return (
+            <ChangesContainer
+                repository={repository}
+            />
+        );
     }
 
     return (
