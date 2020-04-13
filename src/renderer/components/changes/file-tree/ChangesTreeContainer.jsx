@@ -9,7 +9,7 @@ const ChangesTreeContainer = ({ changes }) => {
         const retVal = {};
 
         if (!changes?.length) {
-            return {};
+            return [];
         }
 
         changes.forEach((change) => {
