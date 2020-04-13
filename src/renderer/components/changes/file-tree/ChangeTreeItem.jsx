@@ -1,16 +1,34 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import clsx from 'clsx';
 
 import { REPOSITORY_CHANGE_SHAPE } from '../../../constants/shapes';
 import useChangeTreeItemStyles from './ChangeTreeItemStyles';
 
-const ChangeTreeItem = ({ value, children, selected }) => {
+const ChangeTreeItem = ({
+    value,
+    children,
+    selected,
+    onSelect,
+}) => {
     const classes = useChangeTreeItemStyles();
+    const handleClick = useCallback((event) => {
+        event.stopPropagation();
+
+        if (onSelect) {
+            onSelect(value);
+        }
+    }, [value, onSelect]);
 
     return (
-        <div className={clsx(classes.root, selected && classes.rootSelected)}>
-            <div>{value.name}</div>
+        <div
+            className={classes.root}
+            onClick={handleClick}
+        >
+            <div
+                className={selected && classes.rootSelected}
+            >
+                {value.name}
+            </div>
             {children && (
                 <div>
                     {children}
@@ -27,6 +45,7 @@ ChangeTreeItem.propTypes = {
         PropTypes.arrayOf(PropTypes.node),
     ]),
     selected: PropTypes.bool.isRequired,
+    onSelect: PropTypes.func.isRequired,
 };
 
 ChangeTreeItem.defaultProps = {
