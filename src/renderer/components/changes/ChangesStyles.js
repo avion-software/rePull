@@ -12,6 +12,21 @@ const useChangesStyles = makeStyles((theme) => ({
     bottomBar: {
         backgroundColor: theme.palette.background.bottomBar,
     },
+    files: {
+        display: 'flex',
+        height: '100%',
+        flexDirection: 'column',
+    },
+    filesStaged: {
+        flexGrow: 1,
+        flexShrink: 0,
+        flexBasis: '50%',
+    },
+    filesUnstaged: {
+        flexGrow: 1,
+        flexShrink: 0,
+        flexBasis: '50%',
+    },
 }));
 
 export default useChangesStyles;
