@@ -101,13 +101,35 @@ export default class Repository {
         return this.#simpleGit.commit(message);
     }
 
-    async getChanges() {
+    #getUnstagedChanges = async () => {
         const response = await this.#simpleGit.diff(['--patch', '--full-index']);
+
+        const rawUntrackedFiles = await this.#simpleGit.raw(['ls-files', '--others', '--exclude-standard']);
+        const untrackedFiles = rawUntrackedFiles.split('\n').map((u) => u && u.split('/')).filter((a) => a?.length);
+        const untrackedNewFiles = [];
+
+        const unstagedFiles = parsePatch(response)?.files;
+        untrackedFiles.forEach((untrackedFile) => {
+            const untrackedPath = untrackedFile.join('/');
+
+            if (!unstagedFiles.find((uf) => uf.after === untrackedPath)) {
+                untrackedNewFiles.push({
+                    before: null,
+                    after: untrackedPath,
+                });
+            }
+        });
+
+        return unstagedFiles.concat(untrackedNewFiles);
+    };
+
+    async getChanges() {
+        const unstaged = await this.#getUnstagedChanges();
         const stagedResponse = await this.#simpleGit.diff(['--patch', '--full-index', '--staged']);
 
         return {
             staged: parsePatch(stagedResponse)?.files,
-            unstaged: parsePatch(response)?.files,
+            unstaged,
         };
     }
 
