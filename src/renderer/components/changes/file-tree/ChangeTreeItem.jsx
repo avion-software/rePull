@@ -14,7 +14,7 @@ const ChangeTreeItem = ({
     const handleClick = useCallback((event) => {
         event.stopPropagation();
 
-        if (onSelect) {
+        if (onSelect && !value.children) {
             onSelect(value);
         }
     }, [value, onSelect]);
