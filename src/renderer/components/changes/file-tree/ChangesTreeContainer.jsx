@@ -1,11 +1,10 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import mapTree from '../../../utils/tree/mapTree';
 import { REPOSITORY_CHANGE_SHAPE } from '../../../constants/shapes';
 import ChangesTree from './ChangesTree';
 
-const ChangesTreeContainer = ({ changes }) => {
-    const [selectedItem, setSelectedItem] = useState(null);
+const ChangesTreeContainer = ({ changes, selected, onSelect }) => {
     const changeTree = useMemo(() => {
         const retVal = {};
 
@@ -62,18 +61,22 @@ const ChangesTreeContainer = ({ changes }) => {
     return (
         <ChangesTree
             changes={changeTree}
-            selected={selectedItem}
-            onSelect={setSelectedItem}
+            selected={selected}
+            onSelect={onSelect}
         />
     );
 };
 
 ChangesTreeContainer.propTypes = {
     changes: PropTypes.arrayOf(PropTypes.shape(REPOSITORY_CHANGE_SHAPE)),
+    selected: PropTypes.shape(REPOSITORY_CHANGE_SHAPE),
+    onSelect: PropTypes.func,
 };
 
 ChangesTreeContainer.defaultProps = {
     changes: null,
+    selected: null,
+    onSelect: null,
 };
 
 export default ChangesTreeContainer;

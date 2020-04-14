@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getRepositoryChanges } from '../../store/reducers/repository-changes/selectors';
@@ -14,6 +14,9 @@ const mapStateToProps = (state, props) => ({
 const ChangesContainer = ({ repositoryChanges }) => {
     const classes = useChangesStyles();
 
+    const [unstagedSelected, setUnstagedSelected] = useState(null);
+    const [stagedSelected, setStagedSelected] = useState(null);
+
     return (
         <div className={classes.root}>
             <div className={classes.main}>
@@ -21,6 +24,8 @@ const ChangesContainer = ({ repositoryChanges }) => {
                     <div className={classes.filesStaged}>
                         {repositoryChanges?.staged && (
                             <ChangesTreeContainer
+                                onSelect={setStagedSelected}
+                                selected={stagedSelected}
                                 changes={repositoryChanges?.staged}
                             />
                         )}
@@ -28,6 +33,8 @@ const ChangesContainer = ({ repositoryChanges }) => {
                     <div className={classes.filesUnstaged}>
                         {repositoryChanges?.unstaged && (
                             <ChangesTreeContainer
+                                onSelect={setUnstagedSelected}
+                                selected={unstagedSelected}
                                 changes={repositoryChanges?.unstaged}
                             />
                         )}
