@@ -6,6 +6,7 @@ import { REPOSITORY_CHANGES_SHAPE, REPOSITORY_SHAPE } from '../../constants/shap
 import CommitInputContainer from '../commit/commit-input/CommitInputContainer';
 import useChangesStyles from './ChangesStyles';
 import ChangesTreeContainer from './file-tree/ChangesTreeContainer';
+import CodeChangesContainer from './code-changes/CodeChangesContainer';
 
 const mapStateToProps = (state, props) => ({
     repositoryChanges: getRepositoryChanges(state, props.repository.id),
@@ -39,6 +40,11 @@ const ChangesContainer = ({ repositoryChanges }) => {
                             />
                         )}
                     </div>
+                </div>
+                <div className={classes.codeChanges}>
+                    <CodeChangesContainer
+                        selected={unstagedSelected}
+                    />
                 </div>
             </div>
             <div className={classes.bottomBar}>
