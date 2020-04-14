@@ -1,5 +1,6 @@
 import path from 'path';
 import crypto from 'crypto';
+import { promises as fs } from 'fs';
 import SimpleGit from 'simple-git/promise';
 import parsePatch from 'git-patch-parser';
 
@@ -109,16 +110,40 @@ export default class Repository {
         const untrackedNewFiles = [];
 
         const unstagedFiles = parsePatch(response)?.files;
-        untrackedFiles.forEach((untrackedFile) => {
+        const filePromises = untrackedFiles.map(async (untrackedFile) => {
             const untrackedPath = untrackedFile.join('/');
 
             if (!unstagedFiles.find((uf) => uf.after === untrackedPath)) {
+                const filePath = path.resolve(await this.getPath(), untrackedPath);
+                const fileContent = await fs.readFile(filePath);
+                const fileLines = fileContent.toString('utf-8').split('\n');
+
                 untrackedNewFiles.push({
                     before: null,
                     after: untrackedPath,
+                    hunks: [{
+                        before: {
+                            from: 0,
+                            to: 0,
+                        },
+                        after: {
+                            from: 1,
+                            to: fileLines.length,
+                        },
+                        lines: fileLines.map((content, index) => ({
+                            type: 'added',
+                            line: {
+                                before: 0,
+                                after: index + 1,
+                            },
+                            content,
+                        })),
+                    }],
                 });
             }
         });
+
+        await Promise.all(filePromises);
 
         return unstagedFiles.concat(untrackedNewFiles);
     };
