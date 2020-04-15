@@ -25,5 +25,14 @@ module.exports = (environment = {}, args) => webpackMerge(baseConfig(environment
         new HtmlWebpackPlugin({
             template: path.resolve(ROOT_PATH, 'src', 'renderer', 'index.html'),
         }),
-    ]
+    ],
+    module: {
+        rules: [{
+            test: /\.css$/i,
+            use: ['style-loader', 'css-loader'],
+        },{
+            test: /\.(png|jpe?g|gif|ttf)$/i,
+            use: ['file-loader'],
+        }],
+    },
 });
